@@ -91,7 +91,7 @@
                     </span>
                 </a>
             </li>
-            <li class="sub {{(str_contains(strtolower(URL::current()),'social')) ? 'active show-sub-menu' : ''}}">
+            <li class="sub {{(str_contains(strtolower(URL::current()),'social') || str_contains(strtolower(URL::current()),'setting')) ? 'active show-sub-menu' : ''}}">
                 <a>
                     تنظیمات
                     <span class="material-symbols-outlined">
@@ -111,7 +111,7 @@
                                 </span>
                             </a>
                         </li>
-                        <li class="">
+                        <li class="{{(str_contains(strtolower(URL::current()),'setting')) ? 'active' : ''}}" onclick="location.replace('{{route('admin.setting.index')}}')">
                             <a>
                                 پایه
                                 <span class="material-symbols-outlined">
