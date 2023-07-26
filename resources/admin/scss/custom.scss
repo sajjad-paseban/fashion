@@ -1,0 +1,183 @@
+.bg-light-primary{
+    background-color: #B0DAFF;
+    color: #666;
+}
+.bg-light-danger{
+    background-color: #FF6969;
+    color: #eee;
+}
+.bg-light-warning{
+    background-color: #FFD6A5;
+    color: #666;
+}
+.bg-light-purple{
+    background-color: #E3DFFD;
+    color: #666;
+}
+.text-f-right{
+    text-align: right !important;
+}
+
+.card{
+    position: relative;
+    h4{
+        margin-top: 5px;
+        font-family: 'ghasem';
+    }
+    span.material-symbols-outlined{
+        text-align: right;
+        font-size: 60px;
+        margin-bottom: 10px;
+    }
+    span.digit{
+        font-family: 'yekan';
+        position: absolute;
+        top: 30px;
+        left: 20px;
+        font-size: 50px;
+    }
+}
+
+.custom-card{
+    background-color: #fff;
+    border-top: 3px solid #00C0EF;
+    border-radius: 3px;   
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 1px 0px;
+    .custom-card-header{
+        display: flex;
+        justify-content: space-between;
+        padding: 8px 15px;
+        h6{
+            font-family: 'vazir';
+            font-size: 16px;
+            position: relative;
+            top: 2.5px;
+            user-select: none;
+        }
+        .buttons{
+            display: flex;
+            .default-buttons{
+                border-right: 1px solid #aaa;
+                padding-right: 15px;
+                button{
+                    background-color: transparent;
+                    border: none;
+                    background-color: #D9EDF7;
+                    border-radius: 3px;
+                    &.add{
+                        display: block;
+                    }
+                    &.remove{
+                        display: none;
+                    }
+                    span{
+                        position: relative;
+                        top: 3.5px;
+                        right: 0.5px;
+                        font-size: 20px;
+                        color: #333;
+                    }
+                }
+            }
+            .custom-buttons{
+                margin-left: 15px;
+                a,button{
+                    font-family: 'vazir';
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+    .custom-card-body{
+        display: none;
+        border-top: 1px solid #ddd;
+        padding: 8px 15px;
+        form{
+            direction: rtl;
+        }
+    }
+
+    &.show-content{
+        .custom-card-body{
+            display: block;
+        }   
+        .buttons{
+            .default-buttons{
+                button{
+                    &.add{
+                        display: none;
+                    }
+                    &.remove
+                    {
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+}
+table{
+    direction: rtl;
+    thead{
+        font-family: 'yekan';
+        font-size: 14px;
+    }
+    tbody{
+        font-family: 'vazir';
+        font-size: 14px;
+        tr{
+            td{
+                button,a{
+                    padding: 2px 8px !important; 
+                    font-size: 12px !important;
+                }
+            }
+        }
+    }
+}
+
+.title{
+    color: #666;
+    font-family: 'vazir';
+    text-align: right;
+}
+
+form{
+    label{
+        font-family: 'vazir';
+        font-size: 14px;
+        margin-bottom: 4px;
+    }
+    input{
+        font-family:'vazir';
+    }
+    button{
+        font-family: 'vazir' !important;
+    }
+}
+
+label.error{
+    font-size: 12px;
+    color: #d00;
+}
+input.error{
+    outline: 3px solid #faa;
+    border: 1px solid #d00;
+}
+.jconfirm-title{
+    font-family: 'yekan' !important;
+    font-size: 22px !important;
+    float: right;
+}
+.jconfirm-content{
+    font-family: 'vazir';
+    font-size: 14px;
+    text-align: right;
+    padding-top: 30px;
+    padding-bottom: 10px;
+}
+.jconfirm-buttons{
+    button{
+        font-family: 'vazir';
+    }
+}

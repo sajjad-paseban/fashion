@@ -1,0 +1,612 @@
+body {
+  background-color: rgba(217, 217, 217, 0.3);
+  display: flex;
+  overflow: hidden auto;
+}
+body section.content {
+  width: calc(100% - 230px);
+}
+body section.content.full-width {
+  width: 100% !important;
+}
+body section.content header {
+  display: flex;
+  width: 100%;
+  background-color: #3c8dbc;
+  height: 50px;
+  justify-content: space-between;
+}
+body section.content header ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+body section.content header ul li {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 14px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  cursor: pointer;
+  position: relative;
+}
+body section.content header ul li.profile img {
+  width: 25px;
+  border-radius: 50%;
+}
+body section.content header ul li.profile span {
+  font-family: "vazir";
+  font-size: 16px;
+  margin-right: 10px;
+  color: #fff;
+}
+body section.content header ul li.profile .profile-menu {
+  position: absolute;
+  top: 40px;
+  left: 2px;
+  width: 300px;
+  cursor: default;
+  display: none;
+}
+body section.content header ul li.profile .profile-menu.active {
+  display: block;
+}
+body section.content header ul li.profile .profile-menu .profile-wrapper {
+  width: 100%;
+  margin-top: 12px;
+  background-color: #fff;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  border: 1px solid #dddddd;
+  overflow: hidden;
+}
+body section.content header ul li.profile .profile-menu .profile-wrapper .profile-wrapper-header {
+  margin: 2px;
+  display: flex;
+  width: auto;
+  padding: 10px 0 25px 0;
+  justify-content: center;
+  flex-wrap: wrap;
+  background-color: #3C8DBC;
+}
+body section.content header ul li.profile .profile-menu .profile-wrapper .profile-wrapper-header img {
+  width: 100px;
+  border-radius: 50%;
+  border: 4px solid rgba(255, 255, 255, 0.4);
+}
+body section.content header ul li.profile .profile-menu .profile-wrapper .profile-wrapper-header span {
+  text-align: center;
+  width: 100%;
+  margin: 10px 0 4px 0;
+  font-family: "vazir";
+  font-size: 20px;
+  color: #EEEEEE;
+}
+body section.content header ul li.profile .profile-menu .profile-wrapper .profile-wrapper-header b {
+  width: 100%;
+  text-align: center;
+  font-family: "vazir";
+  color: #EEEEEE;
+  font-size: 12px;
+}
+body section.content header ul li.profile .profile-menu .profile-wrapper .profile-wrapper-body ul {
+  display: flex;
+  justify-content: space-between;
+  margin: 2px;
+}
+body section.content header ul li.profile .profile-menu .profile-wrapper .profile-wrapper-body ul li {
+  padding: 10px;
+  background-color: transparent;
+}
+body section.content header ul li.profile .profile-menu .profile-wrapper .profile-wrapper-body ul li a {
+  text-decoration: none;
+  font-family: "yekan";
+  font-size: 18px;
+  color: #444444;
+}
+body section.content header ul li.profile .profile-menu .profile-wrapper .profile-wrapper-footer {
+  background-color: #F9F9F9;
+}
+body section.content header ul li.profile .profile-menu .profile-wrapper .profile-wrapper-footer ul {
+  display: flex;
+  justify-content: space-between;
+}
+body section.content header ul li.profile .profile-menu .profile-wrapper .profile-wrapper-footer ul li {
+  padding: 15px 12px;
+  background-color: transparent;
+}
+body section.content header ul li.profile .profile-menu .profile-wrapper .profile-wrapper-footer ul li button {
+  font-family: "vazir";
+  font-size: 14px;
+  color: #666666;
+  border-radius: 2px;
+  padding: 5px 16px;
+  background-color: #E7E7E7 !important;
+  border: 1px solid #ADADAD;
+}
+body section.content header ul li .badge {
+  font-family: "yekan";
+  font-size: 16px;
+  padding-top: 2px !important;
+  padding: 0px 4px;
+  border-radius: 50px;
+  position: absolute;
+  top: 4px;
+  left: 2px;
+}
+body section.content header ul li .material-symbols-outlined {
+  color: #fff;
+}
+body section.content header ul li:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+body section.content header ul li .header-box {
+  width: 300px;
+  position: absolute;
+  background-color: #fff;
+  top: 55px;
+  left: 0;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border: 1px solid #ddd;
+  cursor: default;
+  -webkit-user-select: text;
+     -moz-user-select: text;
+          user-select: text;
+  overflow: hidden;
+  display: none;
+}
+body section.content header ul li .header-box.active {
+  display: block;
+}
+body section.content header ul li .header-box .top {
+  display: flex;
+  padding: 12px 10px;
+  justify-content: space-between;
+  border-bottom: 2px solid #f4f4f4;
+}
+body section.content header ul li .header-box .top a, body section.content header ul li .header-box .top button {
+  background-color: transparent;
+  border: none;
+  text-decoration: none;
+  color: #666;
+  font-family: "yekan";
+  font-size: 14px;
+}
+body section.content header ul li .header-box .top span {
+  font-family: "vazir";
+  font-size: 14px;
+  direction: rtl;
+  color: #666;
+}
+body section.content header ul li .header-box .body {
+  max-height: 250px;
+  overflow-y: auto;
+}
+body section.content header ul li .header-box .body .box-item {
+  display: flex;
+  padding: 12px;
+  border-bottom: 1px solid #f5f5f5;
+  justify-content: space-between;
+}
+body section.content header ul li .header-box .footer {
+  text-align: center;
+  padding: 8px 0;
+}
+body section.content header ul li .header-box .footer a {
+  text-decoration: none;
+  color: #666;
+  font-family: "yekan";
+  font-size: 15px;
+}
+body section.content header img.menu-icon {
+  align-self: center;
+  width: 32px;
+  height: 40px;
+  position: relative;
+  right: 8px;
+  bottom: 2px;
+  filter: invert(100);
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+body section.menu {
+  width: 230px;
+  height: 100vh;
+  overflow: hidden auto;
+  background-color: #222d32;
+}
+body section.menu.hidden {
+  width: 0;
+}
+body section.menu .menu-top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  background-color: #367fa9;
+}
+body section.menu .menu-top h4 {
+  color: #fff;
+  font-family: "yekan";
+  position: relative;
+  top: 6px;
+}
+body section.menu .menu-top:hover {
+  background-color: rgba(54, 127, 169, 0.95);
+}
+body section.menu .menu-body .menu-header .menu-header-user {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px;
+}
+body section.menu .menu-body .menu-header .menu-header-user img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+}
+body section.menu .menu-body .menu-header .menu-header-user .info {
+  position: relative;
+  top: 2px;
+  padding: 0 10px;
+  display: flex;
+  flex-wrap: wrap;
+  text-align: right;
+  font-family: "vazir";
+}
+body section.menu .menu-body .menu-header .menu-header-user .info * {
+  width: 100%;
+}
+body section.menu .menu-body .menu-header .menu-header-user .info b {
+  font-size: 16px;
+  color: #fff;
+}
+body section.menu .menu-body .menu-header .menu-header-user .info span {
+  margin-top: 2px;
+  color: #ddd;
+  font-size: 14px;
+}
+body section.menu .menu-body .menu-header .menu-header-user .info span .green-icon {
+  background-color: #3C763D;
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-radius: 100%;
+  margin-left: 5px;
+}
+body section.menu .menu-body .menu-header .menu-header-search form {
+  display: flex;
+  padding: 10px;
+}
+body section.menu .menu-body .menu-header .menu-header-search form input {
+  width: calc(100% - 35px);
+  background-color: #374850;
+  border: none;
+  outline: none;
+  height: 40px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  direction: rtl;
+  padding: 0 10px;
+  font-family: "vazir";
+  font-size: 14px;
+}
+body section.menu .menu-body .menu-header .menu-header-search form button {
+  height: 40px;
+  width: 35px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  background-color: #374850;
+  border: none;
+}
+body section.menu .menu-body .menu-header .menu-header-search form button span {
+  color: #999999;
+  position: relative;
+  top: 4px;
+  font-size: 22px;
+}
+body section.menu .menu-body .menu-header .menu-header-search form.active input, body section.menu .menu-body .menu-header .menu-header-search form.active button {
+  background-color: #fff;
+}
+body section.menu .menu-body .menu-content ul {
+  margin: 0;
+  padding: 0;
+}
+body section.menu .menu-body .menu-content ul h6 {
+  text-align: right;
+  background-color: #1A2226;
+  color: #4B646F;
+  font-family: "yekan";
+  padding: 12px 18px;
+  margin: 0;
+}
+body section.menu .menu-body .menu-content ul li {
+  display: flex;
+  padding: 10px 14px;
+  justify-content: flex-end;
+  position: relative;
+  cursor: pointer;
+}
+body section.menu .menu-body .menu-content ul li a {
+  text-decoration: none;
+  color: #ccc;
+  font-family: "vazir";
+  font-size: 14px;
+  position: relative;
+  bottom: 3px;
+}
+body section.menu .menu-body .menu-content ul li a span {
+  position: relative;
+  left: 0;
+  top: 6px;
+  font-size: 18px;
+  margin-left: 2px;
+}
+body section.menu .menu-body .menu-content ul li span {
+  color: #ccc;
+  font-size: 18px;
+  position: absolute;
+  left: 14px;
+  top: 13px;
+  transition: transform 300ms;
+}
+body section.menu .menu-body .menu-content ul li:hover {
+  background-color: #1E282C;
+}
+body section.menu .menu-body .menu-content ul li:hover a {
+  color: #fff;
+}
+body section.menu .menu-body .menu-content ul li:hover span {
+  color: #fff;
+}
+body section.menu .menu-body .menu-content ul li.active {
+  border-left: 3px solid #3C8DBC;
+  background-color: #1E282C;
+}
+body section.menu .menu-body .menu-content ul li.active a {
+  color: #fff;
+}
+body section.menu .menu-body .menu-content ul li.active span {
+  color: #fff;
+}
+body section.menu .menu-body .menu-content ul li .sub-menu {
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.08);
+  position: absolute;
+  height: 0;
+  top: 46px;
+  left: 0;
+  right: 0;
+}
+body section.menu .menu-body .menu-content ul li .sub-menu ul li {
+  padding: 8px;
+}
+body section.menu .menu-body .menu-content ul li .sub-menu ul li a {
+  font-size: 12px;
+  color: #ccc;
+}
+body section.menu .menu-body .menu-content ul li .sub-menu ul li span {
+  color: #ccc;
+}
+body section.menu .menu-body .menu-content ul li .sub-menu ul li:hover {
+  background-color: transparent;
+}
+body section.menu .menu-body .menu-content ul li .sub-menu ul li:hover a {
+  color: #fff;
+}
+body section.menu .menu-body .menu-content ul li .sub-menu ul li:hover span {
+  color: #fff;
+}
+body section.menu .menu-body .menu-content ul li .sub-menu ul li.active {
+  border: none;
+  background-color: transparent;
+}
+body section.menu .menu-body .menu-content ul li .sub-menu ul li.active a {
+  font-size: 12px;
+  color: #fff;
+}
+body section.menu .menu-body .menu-content ul li .sub-menu ul li.active span {
+  color: #fff;
+}
+body section.menu .menu-body .menu-content ul li.show-sub-menu span {
+  transform: rotate(270deg);
+}
+body section.menu .menu-body .menu-content ul li.show-sub-menu .sub-menu {
+  height: auto;
+}
+
+@media screen and (min-width: 0) and (max-width: 600px) {
+  section.content {
+    width: 100% !important;
+  }
+  section.menu {
+    width: 0 !important;
+  }
+  section.menu.hidden {
+    width: 280px !important;
+  }
+}
+.bg-light-primary {
+  background-color: #B0DAFF;
+  color: #666;
+}
+
+.bg-light-danger {
+  background-color: #FF6969;
+  color: #eee;
+}
+
+.bg-light-warning {
+  background-color: #FFD6A5;
+  color: #666;
+}
+
+.bg-light-purple {
+  background-color: #E3DFFD;
+  color: #666;
+}
+
+.text-f-right {
+  text-align: right !important;
+}
+
+.card {
+  position: relative;
+}
+.card h4 {
+  margin-top: 5px;
+  font-family: "ghasem";
+}
+.card span.material-symbols-outlined {
+  text-align: right;
+  font-size: 60px;
+  margin-bottom: 10px;
+}
+.card span.digit {
+  font-family: "yekan";
+  position: absolute;
+  top: 30px;
+  left: 20px;
+  font-size: 50px;
+}
+
+.custom-card {
+  background-color: #fff;
+  border-top: 3px solid #00C0EF;
+  border-radius: 3px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 1px 0px;
+}
+.custom-card .custom-card-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 15px;
+}
+.custom-card .custom-card-header h6 {
+  font-family: "vazir";
+  font-size: 16px;
+  position: relative;
+  top: 2.5px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.custom-card .custom-card-header .buttons {
+  display: flex;
+}
+.custom-card .custom-card-header .buttons .default-buttons {
+  border-right: 1px solid #aaa;
+  padding-right: 15px;
+}
+.custom-card .custom-card-header .buttons .default-buttons button {
+  background-color: transparent;
+  border: none;
+  background-color: #D9EDF7;
+  border-radius: 3px;
+}
+.custom-card .custom-card-header .buttons .default-buttons button.add {
+  display: block;
+}
+.custom-card .custom-card-header .buttons .default-buttons button.remove {
+  display: none;
+}
+.custom-card .custom-card-header .buttons .default-buttons button span {
+  position: relative;
+  top: 3.5px;
+  right: 0.5px;
+  font-size: 20px;
+  color: #333;
+}
+.custom-card .custom-card-header .buttons .custom-buttons {
+  margin-left: 15px;
+}
+.custom-card .custom-card-header .buttons .custom-buttons a, .custom-card .custom-card-header .buttons .custom-buttons button {
+  font-family: "vazir";
+  font-size: 12px;
+}
+.custom-card .custom-card-body {
+  display: none;
+  border-top: 1px solid #ddd;
+  padding: 8px 15px;
+}
+.custom-card .custom-card-body form {
+  direction: rtl;
+}
+.custom-card.show-content .custom-card-body {
+  display: block;
+}
+.custom-card.show-content .buttons .default-buttons button.add {
+  display: none;
+}
+.custom-card.show-content .buttons .default-buttons button.remove {
+  display: block;
+}
+
+table {
+  direction: rtl;
+}
+table thead {
+  font-family: "yekan";
+  font-size: 14px;
+}
+table tbody {
+  font-family: "vazir";
+  font-size: 14px;
+}
+table tbody tr td button, table tbody tr td a {
+  padding: 2px 8px !important;
+  font-size: 12px !important;
+}
+
+.title {
+  color: #666;
+  font-family: "vazir";
+  text-align: right;
+}
+
+form label {
+  font-family: "vazir";
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+form input {
+  font-family: "vazir";
+}
+form button {
+  font-family: "vazir" !important;
+}
+
+label.error {
+  font-size: 12px;
+  color: #d00;
+}
+
+input.error {
+  outline: 3px solid #faa;
+  border: 1px solid #d00;
+}
+
+.jconfirm-title {
+  font-family: "yekan" !important;
+  font-size: 22px !important;
+  float: right;
+}
+
+.jconfirm-content {
+  font-family: "vazir";
+  font-size: 14px;
+  text-align: right;
+  padding-top: 30px;
+  padding-bottom: 10px;
+}
+
+.jconfirm-buttons button {
+  font-family: "vazir";
+}

@@ -1,0 +1,33 @@
+@font-face {
+    font-family: 'yekan';
+    src: url('../../fonts/Yekan.ttf');
+}
+@font-face {
+    font-family: 'sans';
+    src: url('../../fonts/Sans a4fran3.ttf');
+}
+@font-face {
+    font-family: 'tanha';
+    src: url('../../fonts/Tanha.ttf');
+}
+@font-face {
+    font-family: 'vazir';
+    src: url('../../fonts/Vazir.ttf');
+}
+
+@font-face {
+    font-family: 'ghasem';
+    src: url('../../fonts/AGhasem.ttf');
+}
+@font-face {
+    font-family: 'dalal';
+    src: url('../../fonts/Far_Dalal.ttf');
+}
+@font-face {
+    font-family: 'digital';
+    src: url('../../fonts/Far_Digital_Arabia.ttf');
+}
+@font-face {
+    font-family: 'dimona';
+    src: url('../../fonts/Far_Dimona.ttf');
+}

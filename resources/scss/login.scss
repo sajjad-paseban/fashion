@@ -1,0 +1,126 @@
+body.login{
+    background-color: #fff;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top right;
+    // background-image: url('https://wallpapercave.com/wp/wp5877378.jpg');
+    // background-image: url('https://images.hdqwalls.com/wallpapers/margot-robbie-in-red-dress-img.jpg');
+    // background-image: url('https://wallpapercave.com/wp/wp10161927.jpg');
+    // background-image: url('https://wallpapercave.com/wp/wp9770047.jpg');
+    // background-image: url('https://img1.wallspic.com/crops/9/2/6/3/23629/23629-monochrome_mode-model-woman-singer-girl-2560x1600.jpg') !important;
+    background-image: url('https://images.hdqwalls.com/wallpapers/fashion-model-4k-9k.jpg');
+    position: relative;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    .login-background-cover{
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: rgba(0, 0, 0, 0.75);
+    }
+
+    .login-section{
+        background-color: rgba(0, 0, 0, 0.8);
+        width: 500px;
+        position: relative;
+        right: 100px;
+        bottom: 100px;
+        border-radius: 5px;
+        h2{
+            color: #fff;
+            text-align: center;
+            font-family: 'ghasem';
+            padding: 10px 0;
+        }
+        .form{
+
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            &.invisible{
+                display: none;
+            }
+            .frm-control{
+                display: flex;
+                padding: 10px 40px;
+                width: 100%;
+                flex-wrap: wrap;
+                justify-content: flex-end;
+                label{
+                    color: #fff;
+                    margin: 12px 4px;
+                    font-family: 'vazir';
+                    font-size: 16px;
+                }
+                input{
+                    display: inline-flex;
+                    width: 100%;
+                    height: 40px;
+                    padding: 0 15px;
+                    border-radius: 4px;
+                    outline: 3px solid #d9d9d9;
+                    direction: rtl;
+                    font-size: 18px;
+                    font-family: 'yekan';
+                    &:focus, &:active{
+                        outline: 3px solid #BA55D3;
+                    }
+                }
+                a{
+                    text-decoration: none;
+                    direction: rtl;
+                    font-family: 'vazir';
+                    color: #6495ED;
+                }
+
+            }
+
+            button{
+                margin: 20px;
+                padding: 10px 30px;
+                border-radius: 4px;
+                font-family: 'vazir';
+                font-size: 16px;
+                cursor: pointer;
+                background-color: #0069A8;
+                color: #fff;
+                border: none;
+                &:active{
+                    border: none;
+                    transform: scale(1.05);
+                }
+            }
+        }
+
+    }
+}
+.login-home-icon{
+    cursor: pointer;
+    position: fixed;
+    left: 50px;
+    bottom: 50px;
+    width: 30px;
+    height: 30px;
+    padding: 10px;
+    background-color: #000;
+    border-radius: 10px;
+    img{
+        width: inherit;
+        filter: invert(100);
+    }
+}
+@media screen and (min-width: 0px) and (max-width: 600px){
+    body.login{
+        justify-content: center !important;
+        .login-section{
+            width: 100%;
+            margin: 0 20px;
+            right: 0 !important;
+            bottom: 0 !important;
+        }
+    }
+}
