@@ -618,3 +618,58 @@ textarea.error, input.error {
 .jconfirm-buttons button {
   font-family: "vazir";
 }
+
+.dataTables_length {
+  position: relative;
+}
+.dataTables_length label {
+  color: #fff;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.dataTables_length label select {
+  position: absolute;
+  left: 0;
+  color: #333 !important;
+  font-family: "yekan";
+}
+
+.dataTables_filter label {
+  color: #fff;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.dataTables_filter label input {
+  padding: 8px 10px !important;
+  direction: rtl;
+  color: #333 !important;
+  font-family: "vazir";
+  font-size: 12px;
+  width: 250px;
+}
+
+table.dataTable {
+  padding-top: 20px;
+}
+table.dataTable th.sorting {
+  text-align: center;
+}
+table.dataTable td {
+  border-bottom-width: 0;
+}
+
+.dataTables_info {
+  display: none;
+}
+
+.dataTables_paginate a.previous, .dataTables_paginate a.next {
+  display: none !important;
+}
+.dataTables_paginate span a.paginate_button {
+  margin: 10px 0;
+  padding: 2px 10px !important;
+  font-family: "yekan";
+  font-size: 16px;
+}
