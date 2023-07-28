@@ -39,6 +39,7 @@ class SocialNetworkController extends Controller
         $network->name = $request->get('name');
         $network->link = $request->get('link');
         $network->icon_path = $filename;
+        $network->status = $request->get('status')? true : false;
         if($network->save()){
             $file->move('storage/social/',$filename);
             Log::create(['table_name'=>'social_network','record_id'=>$network->id,'user_id'=>1,'method'=>'insert']);
@@ -77,6 +78,7 @@ class SocialNetworkController extends Controller
         $oldFileName = $network->icon_path;
         $network->name = $request->get('name');
         $network->link = $request->get('link');
+        $network->status = $request->get('status')? true : false;
         if($request->hasFile('icon_path')){
             $file = $request->file('icon_path');
             $newFileName = Carbon::now()->format('Y-m-d-H-i-s-').$file->getClientOriginalName();

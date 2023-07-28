@@ -53,9 +53,16 @@
                             </div>
                         </div>
                         <div class="col-auto">
-                          <button type="submit" class="btn btn-sm btn-primary" style="position: relative; top:29px;">
+                          <button type="submit" class="btn btn-sm btn-primary" style="position: relative; top:27px;">
                             ذخیره
                           </button>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-check">
+                                {!! Form::checkbox('status', null, true,['class'=>'form-check-input']) !!}
+                                {!! Form::label('status','آیا فعال باشد؟',['class'=>'form-check-label']) !!}
+                              </div>
+                            <div>
                         </div>
                     {!! Form::close() !!}
                     @push('script')

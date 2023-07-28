@@ -83,8 +83,8 @@
                     </span>
                 </a>
             </li>
-            <li>
-                <a href="">
+            <li class="{{(str_contains(strtolower(URL::current()),'category')) ? 'active' : ''}}" onclick="location.replace('{{route('admin.category.index')}}')">
+                <a>
                     مدیریت دسته بندی
                     <span class="material-symbols-outlined">
                         category

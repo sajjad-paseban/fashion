@@ -60,6 +60,13 @@
                             ذخیره
                           </button>
                         </div>
+                        <div class="form-group">
+                            <div class="form-check">
+                                {!! Form::checkbox('status', null,$network->status == true ? true : false,['class'=>'form-check-input']) !!}
+                                {!! Form::label('status','آیا فعال باشد؟',['class'=>'form-check-label']) !!}
+                              </div>
+                            <div>
+                        </div>
                     {!! Form::close() !!}
                     @push('script')
                         <script>

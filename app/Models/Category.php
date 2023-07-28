@@ -4,8 +4,19 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Category extends Model
 {
     use HasFactory;
+    protected $table = 'category';
+    protected $fillable = [
+        'title',    
+        'parent_id',    
+        'status'    
+    ];
+    
+    public function category():HasOne{
+        return $this->hasOne(Category::class,'id','parent_id');
+    }
 }

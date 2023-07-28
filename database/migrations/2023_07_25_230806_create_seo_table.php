@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('seo', function (Blueprint $table) {
             $table->id();
+            $table->string('title',255);
+            $table->text('description');
+            $table->string('slug',255);
+            $table->string('keywords',255);
+            $table->integer('type');
+            $table->integer('owner_id');
             $table->timestamps();
         });
     }

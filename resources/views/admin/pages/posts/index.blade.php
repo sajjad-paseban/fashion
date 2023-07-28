@@ -5,7 +5,7 @@
 @endphp
 @extends('admin.index')
 @section('content')
-
+    
     <div class="container-fluid">
         <div class="row">
             <div class="col">
@@ -32,24 +32,36 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td>
-                                    <button class="btn btn-sm bg-light-danger">
-                                        حذف
-                                    </button>
-                                    <a href="" class="btn btn-sm bg-light-purple">
-                                        ویرایش
-                                    </a>
-                                </td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
+                            @php
+                                $count = 0;
+                            @endphp
+                            @foreach ($posts as $item)
+                                @php
+                                    $count++;
+                                @endphp
+                                <tr>
+                                    <td style="font-family: 'yekan';">{{$count}}</td>
+                                    <td>{{$item->title}}</td>
+                                    <td>{{$item->category->title}}</td>
+                                    <td>
+                                        <input class="form-check-input" type="checkbox" {{($item->status == 1)? 'checked' : ''}} disabled>
+                                    </td>
+                                    <td>
+                                        {!! Form::open(['route'=>['admin.post.destroy',$item->id],'method'=>'DELETE','class'=>'d-none','id'=>'delete'.$item->id]) !!}
+                                        {!! Form::close() !!}
+                                        <button onclick="deleteOperation('delete{{$item->id}}')" class="btn btn-sm bg-light-danger">
+                                            حذف
+                                        </button>
+                                        <a href="{{route('admin.post.edit',$item->id)}}" class="btn btn-sm bg-light-purple">
+                                            ویرایش
+                                        </a>
+                                    </td>
+                                    <td>{{$item->created_at}}</td>
+                                    <td>{{$item->updated_at}}</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </x-box>
@@ -61,6 +73,22 @@
         <script>
             new DataTable('#mytable');
             document.querySelector('.dataTables_filter>label>input').placeholder = 'جستجو...';
-        </script>
+            
+            function deleteOperation(id){
+                $.confirm({
+                    title: 'حذف پست',
+                    content: 'آیا از حذف این آیتم مطمعن هستید؟',
+                    buttons: {
+                        "بله": function () {
+                            document.getElementById(id).submit()
+                        },
+                        "خیر": function () {
+
+                        }
+                    }
+                });
+            }
+       </script>
+        
     @endpush
 @endsection

@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('category', function (Blueprint $table) {
             $table->id();
+            $table->string('title',255);
+            $table->integer('parent_id')->default(0);
+            $table->boolean('status')->default(1);
             $table->timestamps();
         });
     }

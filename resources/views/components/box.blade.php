@@ -2,12 +2,12 @@
     <div class="custom-card-header">
         <div class="buttons">
             <div class="default-buttons">
-                <button class="remove">
+                <button type="button" class="remove">
                     <span class="material-symbols-outlined">
                         remove
                     </span>
                 </button>
-                <button class="add">
+                <button type="button" class="add">
                     <span class="material-symbols-outlined">
                         add
                     </span>

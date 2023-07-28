@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('page', function (Blueprint $table) {
             $table->id();
+            $table->string('title',255)->nullable();
+            $table->integer('user_id')->nullable();
+            $table->text('content')->nullable();
+            $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }

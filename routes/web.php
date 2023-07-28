@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\SettingController;
@@ -31,7 +32,8 @@ Route::prefix('administrator')->name('admin.')->group(function(){
         'post' => PostController::class,
         'page' => PageController::class,
         'social' => SocialNetworkController::class,
-        'setting'=> SettingController::class
+        'setting'=> SettingController::class,
+        'category'=> CategoryController::class
     ]);
 
 

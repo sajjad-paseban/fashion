@@ -1,6 +1,6 @@
 @php
     $buttons = [
-        ['name'=>'پست جدید','href'=>route('admin.post.create')]
+        ['name'=>'دسته بندی جدید','href'=>route('admin.category.create')]
     ];
 @endphp
 @extends('admin.index')
@@ -22,7 +22,7 @@
                             <tr>
                                 <th>#</th>
                                 <th>عنوان</th>
-                                <th>دسته بندی</th>
+                                <th>والد</th>
                                 <th>وضعیت</th>
                                 <th>عملیات</th>
                                 <th>تاریخ ثیت</th>
@@ -35,24 +35,24 @@
                             @php
                                 $count = 0;
                             @endphp
-                            @foreach ($posts as $item)
+                            @foreach ($categories as $item)
                                 @php
                                     $count++;
                                 @endphp
                                 <tr>
                                     <td style="font-family: 'yekan';">{{$count}}</td>
                                     <td>{{$item->title}}</td>
-                                    <td>{{$item->category->title}}</td>
+                                    <td>{{$item->category ? $item->category->title : '-'}}</td>
                                     <td>
                                         <input class="form-check-input" type="checkbox" {{($item->status == 1)? 'checked' : ''}} disabled>
                                     </td>
                                     <td>
-                                        {!! Form::open(['route'=>['admin.post.destroy',$item->id],'method'=>'DELETE','class'=>'d-none','id'=>'delete'.$item->id]) !!}
+                                        {!! Form::open(['route'=>['admin.category.destroy',$item->id],'method'=>'DELETE','class'=>'d-none','id'=>'delete'.$item->id]) !!}
                                         {!! Form::close() !!}
                                         <button onclick="deleteOperation('delete{{$item->id}}')" class="btn btn-sm bg-light-danger">
                                             حذف
                                         </button>
-                                        <a href="{{route('admin.post.edit',$item->id)}}" class="btn btn-sm bg-light-purple">
+                                        <a href="{{route('admin.category.edit',$item->id)}}" class="btn btn-sm bg-light-purple">
                                             ویرایش
                                         </a>
                                     </td>
@@ -73,10 +73,11 @@
         <script>
             new DataTable('#mytable');
             document.querySelector('.dataTables_filter>label>input').placeholder = 'جستجو...';
-            
+        </script>
+        <script>
             function deleteOperation(id){
                 $.confirm({
-                    title: 'حذف پست',
+                    title: 'حذف دسته بندی',
                     content: 'آیا از حذف این آیتم مطمعن هستید؟',
                     buttons: {
                         "بله": function () {
@@ -88,7 +89,6 @@
                     }
                 });
             }
-       </script>
-        
+        </script>
     @endpush
 @endsection
