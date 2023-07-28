@@ -1,6 +1,6 @@
 @php
     $buttons = [
-        ['name'=>'پست جدید','href'=>route('admin.post.create')]
+        ['name'=>'پست جدید','href'=>route('admin.page.create')]
     ];
 @endphp
 @extends('admin.index')
@@ -10,19 +10,18 @@
         <div class="row">
             <div class="col">
                 <h4 class="title p-4">
-                    مدیریت پست ها
+                    مدیریت صفحات
                 </h4>
             </div>
         </div>
         <div class="row">
             <div class="col">
-                <x-box title="پست ها" :buttons="$buttons">
+                <x-box title="صفحات" :buttons="$buttons">
                     <table id="mytable" class="table table-hover text-center">
                         <thead>
                             <tr>
                                 <th>#</th>
                                 <th>عنوان</th>
-                                <th>دسته بندی</th>
                                 <th>وضعیت</th>
                                 <th>عملیات</th>
                                 <th>تاریخ ثیت</th>
@@ -35,24 +34,23 @@
                             @php
                                 $count = 0;
                             @endphp
-                            @foreach ($posts as $item)
+                            @foreach ($pages as $item)
                                 @php
                                     $count++;
                                 @endphp
                                 <tr>
                                     <td style="font-family: 'yekan';">{{$count}}</td>
                                     <td>{{$item->title}}</td>
-                                    <td>{{$item->category->title}}</td>
                                     <td>
                                         <input class="form-check-input" type="checkbox" {{($item->status == 1)? 'checked' : ''}} disabled>
                                     </td>
                                     <td>
-                                        {!! Form::open(['route'=>['admin.post.destroy',$item->id],'method'=>'DELETE','class'=>'d-none','id'=>'delete'.$item->id]) !!}
+                                        {!! Form::open(['route'=>['admin.page.destroy',$item->id],'method'=>'DELETE','class'=>'d-none','id'=>'delete'.$item->id]) !!}
                                         {!! Form::close() !!}
                                         <button onclick="deleteOperation('delete{{$item->id}}')" class="btn btn-sm bg-light-danger">
                                             حذف
                                         </button>
-                                        <a href="{{route('admin.post.edit',$item->id)}}" class="btn btn-sm bg-light-purple">
+                                        <a href="{{route('admin.page.edit',$item->id)}}" class="btn btn-sm bg-light-purple">
                                             ویرایش
                                         </a>
                                     </td>
@@ -76,7 +74,7 @@
             
             function deleteOperation(id){
                 $.confirm({
-                    title: 'حذف پست',
+                    title: 'حذف صفحه',
                     content: 'آیا از حذف این آیتم مطمعن هستید؟',
                     buttons: {
                         "بله": function () {

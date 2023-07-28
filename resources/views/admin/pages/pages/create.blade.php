@@ -1,5 +1,5 @@
 @php
-    $buttons = [['name'=>'نمایش تمام پست ها','href'=>route('admin.post.index')]]
+    $buttons = [['name'=>'نمایش تمام صفحات','href'=>route('admin.page.index')]]
 @endphp
 @extends('admin.index')
 
@@ -7,12 +7,12 @@
     @push('style')
 
     @endpush
-    {!! Form::open(['route'=>'admin.post.store','method'=>'POST','id'=>'post_create_form']) !!}
+    {!! Form::open(['route'=>'admin.page.store','method'=>'page','id'=>'page_create_form']) !!}
         <div class="container-fluid">
             <div class="row">
                 <div class="col">
                     <h4 class="title p-4">
-                        مدیریت پست ها - جدید
+                        مدیریت صفحات - جدید
                     </h4>
                 </div>
             </div>
@@ -28,7 +28,7 @@
             </div>
             <div class="row">
                 <div class="col">
-                    <x-box title="پست جدید" :buttons="$buttons">
+                    <x-box title="صفحه جدید" :buttons="$buttons">
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
@@ -36,15 +36,6 @@
                                     {!! Form::text('title',null,['class'=>'form-control form-control-sm','placeholder'=>'مثال: طراحی لباس های اروپایی و مدرن','autocomplete'=>'off']) !!}
                                 </div>
                                 <div class="form-group my-3">
-                                    {!! Form::label('category_id','دسته بندی') !!}
-                                    <select name="category_id" id="category_id" class="form-select form-select-sm" autocomplete="off">
-                                        <option value="" selected>یک گزینه را انتخاب نمایید</option>
-                                        @foreach ($categories as $item)
-                                            <option value="{{$item->id}}">{{$item->title}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div class="form-group">
                                     <div class="form-check">
                                         {!! Form::checkbox('status', null, true,['class'=>'form-check-input']) !!}
                                         {!! Form::label('status','آیا فعال باشد؟',['class'=>'form-check-label']) !!}
@@ -67,7 +58,7 @@
                     <div class="row">
                         <div class="col">
                             <div class="form-group my-2">
-                                {!! Form::label('seoTitle','عنوان پست') !!}
+                                {!! Form::label('seoTitle','عنوان صفحه') !!}
                                 {!! Form::text('seoTitle',null,['class'=>'form-control form-control-sm','placeholder'=>'مثال: طراحی دوخت لباس های مدرن','autocomplete'=>'off']) !!}
                             </div>
                             <div class="form-group my-2">
@@ -107,12 +98,9 @@
                 document.getElementsByName('slug')[0].value = slug;
             }
 
-            $('#post_create_form').validate({
+            $('#page_create_form').validate({
                 rules:{
                     title:{
-                        required: true
-                    },
-                    category_id:{
                         required: true
                     },
                     seoTitle:{
@@ -131,9 +119,6 @@
                 messages:{
                     title:{
                         required: 'فیلد عنوان اجباری می باشد.'
-                    },
-                    category_id:{
-                        required: 'فیلد دسته بندی اجباری می باشد.'
                     },
                     seoTitle:{
                         required: 'فیلد عنوان سئو اجباری می باشد.',
