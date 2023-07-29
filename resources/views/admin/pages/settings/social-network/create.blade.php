@@ -49,7 +49,6 @@
                             <div>
                                 {!! Form::label('icon_path','آپلود آیکون') !!}
                                 {!! Form::file('icon_path',['class'=>'form-control form-control-sm','style'=>'position: relative; bottom: 0px;','placeholder'=>'مثال: https://t.me/fashion']) !!}
-                                
                             </div>
                         </div>
                         <div class="col-auto">

@@ -688,3 +688,19 @@ table.dataTable td {
 .tox-statusbar__branding {
   display: none;
 }
+
+.user-p img {
+  width: 150px !important;
+  height: 150px !important;
+  -o-object-position: top;
+     object-position: top;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50% !important;
+  border: 3px solid #00C0EF;
+}
+.user-p button {
+  position: relative;
+  right: 40px;
+  top: 15px;
+}

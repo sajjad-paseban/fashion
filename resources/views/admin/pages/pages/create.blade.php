@@ -7,7 +7,7 @@
     @push('style')
 
     @endpush
-    {!! Form::open(['route'=>'admin.page.store','method'=>'page','id'=>'page_create_form']) !!}
+    {!! Form::open(['route'=>'admin.page.store','method'=>'POST','id'=>'page_create_form']) !!}
         <div class="container-fluid">
             <div class="row">
                 <div class="col">

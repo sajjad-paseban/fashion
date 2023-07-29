@@ -5,6 +5,7 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\SocialNetworkController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,13 +28,16 @@ Route::prefix('administrator')->name('admin.')->group(function(){
     Route::put('setting/{id}/editSiteIcon',[SettingController::class,'editSiteIcon'])->name('setting.editSiteIcon');
     Route::put('setting/{id}/editSiteLogo',[SettingController::class,'editSiteLogo'])->name('setting.editSiteLogo');
     Route::put('setting/{id}/editLogoTitle',[SettingController::class,'editLogoTitle'])->name('setting.editLogoTitle');
+    Route::put('user/{id}/deletePhoto',[UserController::class,'deletePhoto'])->name('user.deletePhoto');
+
 
     Route::resources([
         'post' => PostController::class,
         'page' => PageController::class,
         'social' => SocialNetworkController::class,
         'setting'=> SettingController::class,
-        'category'=> CategoryController::class
+        'category'=> CategoryController::class,
+        'user'=> UserController::class
     ]);
 
 

@@ -75,8 +75,8 @@
                     </span>
                 </a>
             </li>
-            <li>
-                <a href="">
+            <li class="{{(str_contains(strtolower(URL::current()),'user')) ? 'active' : ''}}" onclick="location.replace('{{route('admin.user.index')}}')">
+                <a>
                     مدیریت کاربران
                     <span class="material-symbols-outlined">
                         person_pin

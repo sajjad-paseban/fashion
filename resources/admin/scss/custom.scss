@@ -252,3 +252,19 @@ table.dataTable{
 .tox-statusbar__branding{
     display: none;
 }
+
+.user-p{
+    img{
+        width: 150px !important;
+        height: 150px !important;
+        object-position: top;
+        object-fit: cover;
+        border-radius: 50% !important;
+        border: 3px solid #00C0EF;
+    }
+    button{
+        position: relative;
+        right: 40px;
+        top: 15px;
+    }
+}
