@@ -67,8 +67,8 @@
                     </span>
                 </a>
             </li>
-            <li>
-                <a href="">
+            <li class="{{(str_contains(strtolower(URL::current()),'section')) ? 'active' : ''}}" onclick="location.replace('{{route('admin.section.index')}}')">
+                <a>
                     مدیریت بخش ها
                     <span class="material-symbols-outlined">
                         filter_none

@@ -3,6 +3,7 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\SectionController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\SocialNetworkController;
 use App\Http\Controllers\UserController;
@@ -37,7 +38,8 @@ Route::prefix('administrator')->name('admin.')->group(function(){
         'social' => SocialNetworkController::class,
         'setting'=> SettingController::class,
         'category'=> CategoryController::class,
-        'user'=> UserController::class
+        'user'=> UserController::class,
+        'section'=> SectionController::class
     ]);
 
 

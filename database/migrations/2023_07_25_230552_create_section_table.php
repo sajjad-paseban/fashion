@@ -13,6 +13,15 @@ return new class extends Migration
     {
         Schema::create('section', function (Blueprint $table) {
             $table->id();
+            $table->string('headerFarsiTitle',255)->nullable();
+            $table->string('headerPhotoPath',255)->nullable();
+            $table->json('headerSlogan')->nullable();
+            $table->string('worldPhoto',255)->nullable();
+            $table->text('worldContent')->nullable();
+            $table->text('trainingContent')->nullable();
+            $table->string('biographyPhotoPath',255)->nullable();
+            $table->text('biographyContent')->nullable();
+            $table->text('socialNetworkContent')->nullable();
             $table->timestamps();
         });
     }
