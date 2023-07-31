@@ -51,8 +51,8 @@
                     </span>
                 </a>
             </li>
-            <li>
-                <a href="">
+            <li class="{{(str_contains(strtolower(URL::current()),'media')) ? 'active' : ''}}" onclick="location.replace('{{route('admin.media.index')}}')">
+                <a>
                     مدیریت رسانه
                     <span class="material-symbols-outlined">
                         perm_media

@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('media', function (Blueprint $table) {
             $table->id();
+            $table->string('path')->nullable();
+            $table->integer('type')->nullable();
             $table->timestamps();
         });
     }

@@ -1,12 +1,14 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\MediaController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\SocialNetworkController;
 use App\Http\Controllers\UserController;
+use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -39,7 +41,8 @@ Route::prefix('administrator')->name('admin.')->group(function(){
         'setting'=> SettingController::class,
         'category'=> CategoryController::class,
         'user'=> UserController::class,
-        'section'=> SectionController::class
+        'section'=> SectionController::class,
+        'media'=> MediaController::class
     ]);
 
 
@@ -55,6 +58,12 @@ Route::get('/profile',function(){
 Route::get('/profile/password',function(){
     return view('pages.profile.password');
 });
+
+Route::get('/page',function(){
+    $post = Post::get()->last();
+    return view('pages.page.index',compact('post'));
+});
+
 
 Route::get('/profile/new-password',function(){
     return view('pages.profile.new-password');
