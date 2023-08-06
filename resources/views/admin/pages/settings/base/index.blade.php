@@ -95,7 +95,7 @@
         <div class="row my-3">
             <div class="col">
                 <x-box title="بخش لوگو سایت">
-                    {!! Form::model($setting,['route'=>['admin.setting.editSiteLogo',1],'method'=>'PUT','files'=>true,'id'=>'setting_siteLogo_edit_form','class'=>'row g-3']) !!}
+                    {!! Form::model($setting,['route'=>['admin.setting.editSiteLogo',$setting->id],'method'=>'PUT','files'=>true,'id'=>'setting_siteLogo_edit_form','class'=>'row g-3']) !!}
                         <div class="col-auto">
                             {!! Form::label('siteLogo','لوگو سایت') !!}
                             {!! Form::file('siteLogo',['class'=>'form-control form-control-sm']) !!}

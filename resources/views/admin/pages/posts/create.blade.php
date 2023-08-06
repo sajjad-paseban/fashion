@@ -7,7 +7,7 @@
     @push('style')
 
     @endpush
-    {!! Form::open(['route'=>'admin.post.store','method'=>'POST','id'=>'post_create_form']) !!}
+    {!! Form::open(['route'=>'admin.post.store','method'=>'POST','files'=>true,'id'=>'post_create_form']) !!}
         <div class="container-fluid">
             <div class="row">
                 <div class="col">
@@ -21,9 +21,23 @@
                     <button class="btn btn-sm btn-primary" type="submit">
                         ذخیره
                     </button>
-                    <button class="btn btn-sm btn-primary" type="submit">
+                    <button class="btn btn-sm btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         آپلود ویدیو و عکس
                     </button>
+                    <!-- Modal -->
+                    <div class="modal fade modal-xl" id="exampleModal">
+                        <div class="modal-dialog">
+                            <div class="modal-content" dir="rtl">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">آپلود ویدیو و عکس</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <iframe src="http://localhost:3000/fashion/public/administrator/media" style="border:none;height: 100vh; width:100%;" title="Iframe Example"></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="row">
@@ -34,6 +48,10 @@
                                 <div class="form-group">
                                     {!! Form::label('title','عنوان') !!}
                                     {!! Form::text('title',null,['class'=>'form-control form-control-sm','placeholder'=>'مثال: طراحی لباس های اروپایی و مدرن','autocomplete'=>'off']) !!}
+                                </div>
+                                <div class="form-group my-3">
+                                    {!! Form::label('path','آپلود تصویر') !!}
+                                    {!! Form::file('path',['class'=>'form-control form-control-sm']) !!}
                                 </div>
                                 <div class="form-group my-3">
                                     {!! Form::label('category_id','دسته بندی') !!}

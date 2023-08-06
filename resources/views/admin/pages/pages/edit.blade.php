@@ -21,9 +21,23 @@
                     <button class="btn btn-sm btn-primary" type="submit">
                         بروزرسانی
                     </button>
-                    <button class="btn btn-sm btn-primary" type="submit">
+                    <button class="btn btn-sm btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         آپلود ویدیو و عکس
                     </button>
+                    <!-- Modal -->
+                    <div class="modal fade modal-xl" id="exampleModal">
+                        <div class="modal-dialog">
+                            <div class="modal-content" dir="rtl">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">آپلود ویدیو و عکس</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <iframe src="http://localhost:3000/fashion/public/administrator/media" style="border:none;height: 100vh; width:100%;" title="Iframe Example"></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="row">

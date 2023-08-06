@@ -11,40 +11,105 @@
 <body class="login">
     <div class="login-background-cover"></div>
     <div class="login-section">
-        <div class="login-section-first form">
-            <h2>
-                ورود به سایت
-            </h2>
-            <div class="frm-control">
-                <label for="phone">شماره همراه</label>
-                <input id="phone" name="phone" placeholder="مثال: 09901234574" oninput="this.value = this.value.replace(/[^0-9]/g,'')" maxlength="13" type="text">
+        <form action="/" id="phone_form">
+            <div class="login-section-first form">
+                <h2>
+                    ورود به سایت
+                </h2>
+                <div class="frm-control">
+                    <label for="phone">شماره همراه</label>
+                    <input id="phone" name="phone" placeholder="مثال: 09901234574" oninput="this.value = this.value.replace(/[^0-9]/g,'')" maxlength="11" type="text">
+                </div>
+                <button type="submit">
+                    ادامه
+                </button>
             </div>
-            <button type="button" id="phone-continue">
-                ادامه
-            </button>
-        </div>
-        <div class="login-section-second invisible form">
-            <h2>
-                ورود به سایت
-            </h2>
-            <div class="frm-control">
-                <label for="password">گذرواژه</label>
-                <input id="password" name="password" type="password">
+        </form>
+        <form id="password_form">
+            <div class="login-section-second invisible form">
+                <h2>
+                    ورود به سایت
+                </h2>
+                <div class="frm-control">
+                    <label for="password">گذرواژه</label>
+                    <input id="password" name="password" type="password">
+                </div>
+                <div class="frm-control">
+                    <a href="">
+                        گذرواژه خود را فراموش کرده ام!
+                    </a>
+                </div>
+                <button type="submit">
+                    ادامه
+                </button>
             </div>
-            <div class="frm-control">
-                <a href="">
-                    گذرواژه خود را فراموش کرده ام!
-                </a>
-            </div>
-            <button type="button" id="password-continue">
-                ادامه
-            </button>
-        </div>
+        </form>
     </div>
     <div class="login-home-icon" onclick="location.replace('{{route('home')}}')">
         <img src="https://cdn-icons-png.flaticon.com/512/25/25694.png" alt="خانه">
     </div>
+    <script src="{{asset('dist/js/jquery-3.7.0.js')}}"></script>
+    <script src="{{asset('dist/js/jquery.validate.js')}}"></script>
     <script>
+
+            $('#phone_form').validate({
+                rules:{
+                    phone:{
+                        required: true,
+                        minlength: 11,
+                        maxlength: 11
+                    }
+                },
+                messages:{
+                    phone:{
+                        required: '.فیلد شماره همراه اجباری می باشد',
+                        minlength: '.طول فیلد شماره همراه حداقل 11 رقم می باشد',
+                        maxlength: '.طول فیلد شماره همراه حداکثر 11 رقم می باشد'
+                    }
+                },
+                submitHandler: function(form){
+                    $.ajax({url: "api/user/phonenumber/"+form.phone.value,method: 'POST', success: function(result){
+                        if(result.userExist == 1){
+                            sessionStorage.setItem('user_id',result.user_id);
+                            const forms = [
+                                'login-section-first',
+                                'login-section-second',
+                            ];
+                            var step = 0;
+                            step = 1;
+                            document.getElementsByClassName(forms[step-1])[0].classList.toggle('invisible');
+                            document.getElementsByClassName(forms[step])[0].classList.toggle('invisible');
+                            
+                        }else{
+                            location.replace('{{route('profile.password')}}');
+                        }
+                    }});
+                }
+            });
+
+            $('#password_form').validate({
+                rules:{
+                    password:{
+                        required: true
+                    }
+                },
+                messages:{
+                    password:{
+                        required: '.فیلد گذرواژه اجباری می باشد'
+                    }
+                },
+                submitHandler: function(form){
+                    $.ajax({url: "api/user/"+sessionStorage.getItem('user_id')+"/password", data: {password: form.password.value} ,method: 'POST', success: function(res){
+                        sessionStorage.clear();
+                        if(res.status == 1){
+                            location.replace('{{route('home')}}');
+                        }else if(res.status == 0){
+                            location.replace('{{route('login')}}');
+                        }
+                    }})
+                }
+            });
+
         // login background changer
             const login_background_data = [
                 {url: 'https://wallpapercave.com/wp/wp5877378.jpg' , position: 'top center'},
@@ -62,6 +127,5 @@
 
     </script>
     <script src="{{asset('dist/js/login.js')}}"></script>
-    <script src="{{asset('dist/js/app.js')}}"></script>
 </body>
 </html>

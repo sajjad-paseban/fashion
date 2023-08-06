@@ -94,7 +94,6 @@ section.content div.section.fashion-world-section .section-content {
 }
 section.content div.section.fashion-world-section .section-content .section-content-bg {
   margin: 2px;
-  background-image: url("https://imageio.forbes.com/specials-images/imageserve/626535993/0x0.jpg?format=jpg&width=1200");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -629,6 +628,7 @@ header .header-main section.header-top .header-top-menu ul li#train-list-item .t
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  align-items: flex-start;
 }
 header .header-main section.header-top .header-top-menu ul li#train-list-item .train-menu .train-menu-wrapper ul {
   padding: 0;
@@ -641,7 +641,7 @@ header .header-main section.header-top .header-top-menu ul li#train-list-item .t
   margin: 0;
   padding: 0;
 }
-header .header-main section.header-top .header-top-menu ul li#train-list-item .train-menu .train-menu-wrapper ul h2 {
+header .header-main section.header-top .header-top-menu ul li#train-list-item .train-menu .train-menu-wrapper ul h2, header .header-main section.header-top .header-top-menu ul li#train-list-item .train-menu .train-menu-wrapper ul h3, header .header-main section.header-top .header-top-menu ul li#train-list-item .train-menu .train-menu-wrapper ul h4 {
   padding: 15px 20px;
   font-family: "yekan";
   color: #fff;

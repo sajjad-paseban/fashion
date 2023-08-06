@@ -15,7 +15,7 @@ class SettingController extends Controller
      */
     public function index()
     {
-        $setting = Setting::find(1);
+        $setting = Setting::get()->last();
         return view('admin.pages.settings.base.index',compact('setting'));
     }
 

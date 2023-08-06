@@ -48,7 +48,7 @@
                                         <button onclick="deleteOperation('delete{{$item->id}}')" class="btn btn-sm bg-light-danger">
                                             حذف
                                         </button>
-                                        <button type="button" class="btn btn-sm bg-light-primary">
+                                        <button type="button" onclick="navigator.clipboard.writeText('{{asset('storage/media/'.$item->path)}}')" class="btn btn-sm bg-light-primary">
                                             کپی کردن لینک
                                         </button>
                                     </td>

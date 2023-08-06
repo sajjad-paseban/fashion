@@ -1,36 +1,46 @@
+@php
+    $setting = \App\Models\Setting::get()->last();
+    $section = \App\Models\Section::get()->last();
+    $category = \App\Models\Category::all();
+
+@endphp
 <header>
     <div class="header-cover-shadow"></div>
     <div class="header-main">
         <section class="header-top fixed">
             <div class="header-top-search">
-                {{-- <a href="{{route('login')}}">
-                    <img src="https://cdn-icons-png.flaticon.com/512/5509/5509636.png" alt="ورود">
-                </a> --}}
-                <div class="image-profile">
-                    <img class="default-image-profile" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/2048px-Default_pfp.svg.png" alt="پروفایل">
-                    <span>
-                        09152146319
-                    </span>
-                    <div class="image-profile-menu">
-                        <div class="image-profile-menu-wrapper">
-                            <ul>
-                                <li>
-                                    <a href="">
-                                        مدیریت پروفایل
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="">
-                                        تغییر گذرواژه
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="">خروج از سایت</a>
-                                </li>
-                            </ul>
+                @if (session()->has('user_id'))                    
+                    <div class="image-profile">
+                        <img class="default-image-profile" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/2048px-Default_pfp.svg.png" alt="پروفایل">
+                        <span>
+                            09152146319
+                        </span>
+                        <div class="image-profile-menu">
+                            <div class="image-profile-menu-wrapper">
+                                <ul>
+                                    <li>
+                                        <a href="">
+                                            مدیریت پروفایل
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="">
+                                            تغییر گذرواژه
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{route('logout')}}">خروج از سایت</a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                </div>
+                @else
+                
+                <a href="{{route('login')}}">
+                    <img src="https://cdn-icons-png.flaticon.com/512/5509/5509636.png" alt="ورود">
+                </a>
+                @endif
             </div>
             <div class="header-top-menu">
                 <ul>
@@ -47,78 +57,35 @@
                         <img src="https://www.iconpacks.net/icons/2/free-arrow-down-icon-3101-thumb.png" alt="">
                         <div class="train-menu">
                             <div class="train-menu-wrapper">
+                                @foreach ($category as $item)
+                                @if ($item->parent_id == 0)
                                 <ul>
-                                    <h2>طراحی مد</h2>
-                                    <li>
-                                        <a href="">مقدمه</a>
-                                    </li>
-                                    <li>
-                                        <a href="">بخش 1</a>
-                                    </li>
-                                </ul>
-                                <ul>
-                                    <h2>برای تست</h2>
-                                    <li>
-                                        <a href="">مقدم</a>
-                                    </li>
-                                    <li>
-                                        <a href="">بخش 2</a>
-                                    </li>
-                                </ul>
-                                <ul>
-                                    <h2>برای تست</h2>
-                                    <li>
-                                        <a href="">مقدم</a>
-                                    </li>
-                                    <li>
-                                        <a href="">بخش 2</a>
-                                    </li>
-                                </ul>
-                                <ul>
-                                    <h2>برای تست</h2>
-                                    <li>
-                                        <a href="">مقدم</a>
-                                    </li>
-                                    <li>
-                                        <a href="">بخش 2</a>
-                                    </li>
-                                </ul>
-                                <ul>
-                                    <h2>برای تست</h2>
-                                    <li>
-                                        <a href="">مقدم</a>
-                                    </li>
-                                    <li>
-                                        <a href="">بخش 2</a>
-                                    </li>
-                                </ul>
-                                <ul>
-                                    <h2>برای تست</h2>
-                                    <li>
-                                        <a href="">مقدم</a>
-                                    </li>
-                                    <li>
-                                        <a href="">بخش 2</a>
-                                    </li>
-                                </ul>
-                                <ul>
-                                    <h2>برای تست</h2>
-                                    <li>
-                                        <a href="">1</a>
-                                    </li>
-                                    <li>
-                                        <a href="">2</a>
-                                    </li>
-                                </ul>
-                                <ul>
-                                    <h2>برای تست</h2>
-                                    <li>
-                                        <a href="">1</a>
-                                    </li>
-                                    <li>
-                                        <a href="">2</a>
-                                    </li>
-                                </ul>
+                                            <h2>{{$item->title}}</h2>
+                                            @foreach ($item->posts as $post)
+                                            <li>
+                                                    <a href="">{{$post->title}}</a>
+                                                </li>
+                                                @endforeach()
+                                            @foreach ($item->children as $child)
+                                            <h3>- {{$child->title}}</h3>
+                                                @foreach ($child->posts as $post)
+                                                    <li>
+                                                        <a href="">{{$post->title}}</a>
+                                                    </li>
+                                                    @endforeach()
+                                                    
+                                                    @foreach ($child->children as $child2)
+                                                    <h4>- {{$child2->title}}</h4>
+                                                    @foreach ($child2->posts as $post)
+                                                        <li>
+                                                            <a href="">{{$post->title}}</a>
+                                                        </li>
+                                                    @endforeach()
+                                                @endforeach
+                                            @endforeach
+                                        </ul>
+                                    @endif
+                                    @endforeach
                             </div>
                         </div>
                     </li>
@@ -131,11 +98,28 @@
                 </ul>
             </div>
             <div class="header-top-logo">
-                <span onclick="location.replace('{{route('home')}}')">
-                    <b>مونا</b> گلچین
-                </span>
-                <img onclick="location.replace('{{route('home')}}')" src="https://icon-library.com/images/hanger-icon/hanger-icon-17.jpg" alt="لوگو">
-            </div>
+                @if ($setting->logoTitle)
+                @php
+                        $text = $setting->logoTitle;
+                        $words = explode(" ", $text);
+                        $firstWord = $words[0];
+                        $restOfText = implode(" ", array_slice($words, 1));
+                        @endphp
+                    <span onclick="location.replace('{{route('home')}}')">
+                        <b>{{$firstWord}}</b> {{$restOfText}}
+                    </span>
+                    @else
+                    <span onclick="location.replace('{{route('home')}}')">
+                        <b>مونا</b> گلچین
+                    </span>
+                    @endif
+                    
+                    @if ($setting->siteLogo)
+                    <img onclick="location.replace('{{route('home')}}')" src="{{asset('storage/setting/'.$setting->siteLogo)}}" alt="لوگو">                
+                    @else
+                    <img onclick="location.replace('{{route('home')}}')" src="https://icon-library.com/images/hanger-icon/hanger-icon-17.jpg" alt="لوگو">                
+                    @endif
+                </div>
             <div class="header-top-menu-mobile">
                 <img src="{{asset('images/menu_icon.png')}}" class="menu_icon" alt="آیکون منو">
                 <div class="header-top-menu-mobile-wrapper">
@@ -187,10 +171,31 @@
         @if (str_ends_with(strtolower(URL::current()),'public'))
             <section class="header-content">
                 <div class="header-content-side">
-                    <p class="headline-first">طراحی مد <span>با</span> <b>مونا</b></p>
+                    @if ($setting->logoTitle)
+                    @php
+                            $text = $section->headerFarsiTitle;
+                            $words = explode(" ", $text);
+                            $lastWord = $words[count($words)-1];
+                            $restOfText = implode(" ", array_slice($words, 0,count($words)-1));
+                            @endphp
+                        <p class="headline-first">{{$restOfText}} <b>{{$lastWord}}</b></p>
+                        @else
+                        <p class="headline-first">طراحی مد <span>با</span> <b>مونا</b></p>
+                        @endif
+                        @if ($section->headerSlogan)
+                        @php
+                            $slogan = json_decode($section->headerSlogan);
+                            @endphp
+                        <p class="headline-second">{{$slogan->first}} <span>{{$slogan->second}}</span> <b>{{$slogan->third}}</b></p>                        
+                    @else
                     <p class="headline-second">FASHION <span>NEVER</span> <b>SLEEPS</b></p>
+                    @endif
                 </div>
+                @if ($section->headerPhotoPath)
+                    <img class="photograph" src="{{asset('storage/section/'.$section->headerPhotoPath)}}" alt="مونا گلچین">
+                @else
                 <img class="photograph" src="{{asset('images/michael-guichard-SALWA-RAJAA-0116-5-removebg-preview.png')}}" alt="مونا گلچین">
+                @endif
             </section>
         @else
             <style>

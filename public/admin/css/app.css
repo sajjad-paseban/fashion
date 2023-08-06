@@ -704,3 +704,12 @@ table.dataTable td {
   right: 40px;
   top: 15px;
 }
+
+.modal {
+  font-family: "yekan";
+}
+.modal .modal-dialog {
+  width: calc(100% - 30px) !important;
+  max-width: calc(100% - 30px) !important;
+  margin: 15px !important;
+}
