@@ -99,12 +99,12 @@
             </div>
             <div class="header-top-logo">
                 @if ($setting->logoTitle)
-                @php
+                    @php
                         $text = $setting->logoTitle;
                         $words = explode(" ", $text);
                         $firstWord = $words[0];
                         $restOfText = implode(" ", array_slice($words, 1));
-                        @endphp
+                    @endphp
                     <span onclick="location.replace('{{route('home')}}')">
                         <b>{{$firstWord}}</b> {{$restOfText}}
                     </span>
