@@ -31,5 +31,6 @@
     <script src="{{asset('dist/js/jquery-3.7.0.js')}}"></script>
     <script src="{{asset('dist/js/jquery.validate.js')}}"></script>
     <script src="{{asset('dist/js/app.js')}}"></script>
+    @stack('script')
 </body>
 </html>

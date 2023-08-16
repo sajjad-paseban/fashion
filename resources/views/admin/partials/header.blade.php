@@ -13,12 +13,12 @@
                     <div class="profile-wrapper-body">
                         <ul>
                             <li>
-                                <a href="">
+                                <a href="{{route('home')}}">
                                     رفتن به سایت
                                 </a>
                             </li>
                             <li>
-                                <a href="">
+                                <a href="{{route('admin.setting.index')}}">
                                     تنظیمات
                                 </a>
                             </li>
@@ -27,9 +27,9 @@
                     <div class="profile-wrapper-footer">
                         <ul>
                             <li>
-                                <button>
+                                <a href="{{route('logout')}}">
                                     خروج
-                                </button>
+                                </a>
                             </li>
                             <li>
                                 <button>

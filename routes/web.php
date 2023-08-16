@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\SocialNetworkController;
@@ -52,7 +53,6 @@ Route::middleware(['Authenticated','IsAdmin'])->group(function(){
 });
     
 Route::get('/', function () {
-    //session()->flush();
     $section = Section::get()->last();
     $setting = Setting::get()->last();
     $posts = Post::where('status',true)->orderBy('id')->get()->take(3);
@@ -64,23 +64,16 @@ Route::get('/page',function(){
     $post = Post::get()->last();
     return view('pages.page.index',compact('post'));
 })->name('page');
-    
-Route::middleware('Authenticated')->name('profile.')->group(function(){
-    
-    Route::get('/profile',function(){
-        return view('pages.profile.index');
-    });
-    Route::get('/profile/password',function(){
-        return view('pages.profile.password');
-    })->name('password');
-    
-    Route::get('/profile/new-password',function(){
-        return view('pages.profile.new-password');
-    });
-    Route::get('/profile/change-password',function(){
-        return view('pages.profile.change-password');
-    });
+
+Route::prefix('profile')->name('profile.')->group(function(){
+    Route::get('',[ProfileController::class,'index'])->name('index');
+    Route::get('change-password',[ProfileController::class,'changePassword'])->name('change-password');
+    Route::get('new-password',[ProfileController::class,'newPassword'])->name('new-password');
+    Route::get('password',[ProfileController::class,'password'])->name('password');
+    Route::put('password_action',[ProfileController::class,'password_action'])->name('password-action');
+    Route::put('change_password_action',[ProfileController::class,'changePassword_action'])->name('change-password-action');
 });
+
 
 Route::get('/login',function(){
     return view('login');
@@ -89,4 +82,4 @@ Route::get('/login',function(){
 Route::get('logout',function(){
     session()->flush();
     return to_route('home');
-})->name('logout');
+})->name('logout')->middleware('Authenticated');

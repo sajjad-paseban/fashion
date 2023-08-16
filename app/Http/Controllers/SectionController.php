@@ -10,6 +10,11 @@ use Illuminate\Http\Request;
 
 class SectionController extends Controller
 {
+
+    public function __construct(){
+        $this->middleware('Initial');
+    }
+
     /**
      * Display a listing of the resource.
      */

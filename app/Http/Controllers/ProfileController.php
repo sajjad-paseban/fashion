@@ -1,65 +1,49 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Models\Profile;
+use App\Models\User;
+use Hash;
 use Illuminate\Http\Request;
-
 class ProfileController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
+    public function __construct(){
+        $this->middleware('Authenticated');
+        $this->middleware('NoPassword')->except(['password','password_action']);
+    }
+    public function index(){
+        return view('pages.profile.index');
+    }
+    public function changePassword(){
+        return view('pages.profile.change-password');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+    public function changePassword_action(Request $request){
+        $user = User::find(session()->get('user_id'));
+        if(Hash::check($request->get('current_password'),$user->password)){
+            $user->password = Hash::make($request->get('password'));
+
+            if($user->save())
+                return to_route('home');
+        }
+        
+        return back();
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
+    public function newPassword(){
+        return view('pages.profile.new-password');
     }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Profile $profile)
-    {
-        //
+    public function password(){
+        $user = User::find(request()->session()->get('user_id'));
+        if($user->password)
+            return to_route('home');
+        return view('pages.profile.password');
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Profile $profile)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Profile $profile)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Profile $profile)
-    {
-        //
+    public function password_action(Request $request){
+        $user = User::find(session()->get('user_id'));
+        $user->password = Hash::make($request->get('password'));
+        if($user->save())
+            return to_route('profile.index');
+        
+        return back();
     }
 }

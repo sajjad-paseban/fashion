@@ -16,9 +16,9 @@ class IsAdmin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        //$bool = User::find($request->session()->get('user_id'));
-        //if(!$bool->IsAdmin)
-        //    return back();
+        $bool = User::find($request->session()->get('user_id'));
+        if(!$bool->is_admin)
+            return back();
             
         return $next($request);
     }

@@ -3,7 +3,7 @@
 const up_arrow = document.getElementsByClassName('up-arrow')[0];
 up_arrow.addEventListener('click',()=>{
     if(window.scrollY > 0)
-    window.scrollTo(0,0)
+        window.scrollTo(0,0)
 })
 
 // UP_ARROW ICON FUNCTION //

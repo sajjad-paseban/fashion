@@ -2,11 +2,13 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Section;
+use App\Models\Setting;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class Authenticated
+class InitialMiddleware
 {
     /**
      * Handle an incoming request.
@@ -15,9 +17,16 @@ class Authenticated
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(!$request->session()->has('user_id'))
-            return to_route('login');
-            
+        $setting = Setting::count();
+        $section = Section::count();
+
+        if($setting == 0)
+            Setting::create([]);
+    
+        if($section == 0)
+            Section::create([]);
+    
+    
         return $next($request);
     }
 }

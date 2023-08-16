@@ -72,5 +72,7 @@ class Kernel extends HttpKernel
         'IsAdmin' => \App\Http\Middleware\IsAdmin::class,
         'Authenticated' => \App\Http\Middleware\Authenticated::class,
         'NotAuthenticated' => \App\Http\Middleware\NotAuthenticated::class,
+        'Initial' => \App\Http\Middleware\InitialMiddleware::class,
+        'NoPassword' => \App\Http\Middleware\NoPassword::class,
     ];
 }

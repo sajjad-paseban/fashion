@@ -2,11 +2,12 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\User;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class Authenticated
+class NoPassword
 {
     /**
      * Handle an incoming request.
@@ -15,9 +16,9 @@ class Authenticated
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(!$request->session()->has('user_id'))
-            return to_route('login');
-            
+        $user = User::find($request->session()->get('user_id'));
+        if($user->password === null)
+            return to_route('profile.password');
         return $next($request);
     }
 }

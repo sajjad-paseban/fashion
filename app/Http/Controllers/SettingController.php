@@ -10,6 +10,10 @@ use Illuminate\Http\Request;
 
 class SettingController extends Controller
 {
+    public function __construct(){
+        $this->middleware('Initial');
+    }
+
     /**
      * Display a listing of the resource.
      */

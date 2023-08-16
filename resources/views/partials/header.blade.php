@@ -1,4 +1,5 @@
 @php
+    $user = \App\Models\User::find(session()->get('user_id'));
     $setting = \App\Models\Setting::get()->last();
     $section = \App\Models\Section::get()->last();
     $category = \App\Models\Category::all();
@@ -7,7 +8,7 @@
 <header>
     <div class="header-cover-shadow"></div>
     <div class="header-main">
-        <section class="header-top fixed">
+        <section class="header-top">
             <div class="header-top-search">
                 @if (session()->has('user_id'))                    
                     <div class="image-profile">
@@ -18,13 +19,20 @@
                         <div class="image-profile-menu">
                             <div class="image-profile-menu-wrapper">
                                 <ul>
+                                    @if ($user->is_admin)
+                                        <li>
+                                            <a href="{{route('admin.dashboard')}}">
+                                                مدیریت سایت
+                                            </a>
+                                        </li>                                        
+                                    @endif
                                     <li>
-                                        <a href="">
+                                        <a href="{{route('profile.index')}}">
                                             مدیریت پروفایل
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="">
+                                        <a href="{{route('profile.change-password')}}">
                                             تغییر گذرواژه
                                         </a>
                                     </li>

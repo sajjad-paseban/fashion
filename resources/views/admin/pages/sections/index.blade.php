@@ -45,15 +45,15 @@
                         @endif
                         <div class="col-auto">
                             {!! Form::label('headerSloganFirst','شعار(بخش اول)') !!}
-                            {!! Form::text('headerSloganFirst',json_decode($section->headerSlogan)->first ? json_decode($section->headerSlogan)->first : null ,['class'=>'form-control form-control-sm']) !!}
+                            {!! Form::text('headerSloganFirst',$section->headerSlogan ? json_decode($section->headerSlogan)->first ? json_decode($section->headerSlogan)->first : null : null ,['class'=>'form-control form-control-sm']) !!}
                         </div>
                         <div class="col-auto">
                             {!! Form::label('headerSloganSecond','شعار(بخش دوم)') !!}
-                            {!! Form::text('headerSloganSecond',json_decode($section->headerSlogan)->second ? json_decode($section->headerSlogan)->second : null,['class'=>'form-control form-control-sm']) !!}
+                            {!! Form::text('headerSloganSecond',$section->headerSlogan ? json_decode($section->headerSlogan)->second ? json_decode($section->headerSlogan)->second : null : null,['class'=>'form-control form-control-sm']) !!}
                         </div>
                         <div class="col-auto">
                             {!! Form::label('headerSloganThird','شعار(بخش سوم)') !!}
-                            {!! Form::text('headerSloganThird',json_decode($section->headerSlogan)->third ? json_decode($section->headerSlogan)->third : null,['class'=>'form-control form-control-sm']) !!}
+                            {!! Form::text('headerSloganThird',$section->headerSlogan ? json_decode($section->headerSlogan)->third ? json_decode($section->headerSlogan)->third : null : null,['class'=>'form-control form-control-sm']) !!}
                         </div>
                         {!! Form::hidden('__type','1') !!}
 
