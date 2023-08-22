@@ -1,3 +1,6 @@
+@php
+    $user = App\Models\User::find(session()->get('user_id'));
+@endphp
 <div class="menu-top">
     <h4>
         کنترل پنل مدیریت
@@ -7,13 +10,13 @@
     <div class="menu-header">
         <div class="menu-header-user">
             <div class="info">
-                <b>مونا گلچین</b>
+                <b>{{$user->name}}</b>
                 <span>
                     آنلاین
                     <span class="green-icon"></span>
                 </span>
             </div>
-            <img src="https://hosseinizadeh.ir/adminlte/dist/img/user2-160x160.jpg" alt="">
+            <img src="{{$user->photo_path ? asset('storage/user/'.$user->photo_path) : 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/2048px-Default_pfp.svg.png'}}" alt="">
         </div>
         <div class="menu-header-search">
             <form action="">

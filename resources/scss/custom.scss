@@ -1,3 +1,19 @@
+.profile{
+    justify-content: center !important;
+    label{
+        width: 100%;
+        text-align: center;
+        color: #6495ED !important;
+        cursor: pointer;
+    }
+    img.image-profile{
+        width: 150px !important;
+        height: 150px;
+        border-radius: 50%;
+        object-position: center center;
+        object-fit: cover;
+    }
+}
 .frm-control{
     display: flex;
     padding: 10px 40px;
@@ -50,4 +66,8 @@ button.custom-btn{
         border: none;
         transform: scale(1.05);
     }
+}
+
+jdp-container{
+    font-family: 'yekan';
 }

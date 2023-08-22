@@ -62,8 +62,12 @@ header{
                     cursor: pointer;
                     img{
                         width: 35px;
+                        height: 35px;
+                        border-radius: 50%;
                         position: relative;
                         top: 2px;
+                        object-fit: cover;
+                        object-position: center center;
                     }
                     span{
                         margin: 0 12px;
@@ -373,6 +377,7 @@ header{
                     .image-profile{
                         img{
                             width: 30px;
+                            height: 30px;
                             position: relative;
                             top: 2px;
                         }

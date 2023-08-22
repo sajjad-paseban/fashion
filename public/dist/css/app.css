@@ -404,6 +404,25 @@ footer p::before {
     text-align: center;
   }
 }
+.profile {
+  justify-content: center !important;
+}
+.profile label {
+  width: 100%;
+  text-align: center;
+  color: #6495ED !important;
+  cursor: pointer;
+}
+.profile img.image-profile {
+  width: 150px !important;
+  height: 150px;
+  border-radius: 50%;
+  -o-object-position: center center;
+     object-position: center center;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 .frm-control {
   display: flex;
   padding: 10px 40px;
@@ -455,6 +474,10 @@ button.custom-btn {
 button.custom-btn:active {
   border: none;
   transform: scale(1.05);
+}
+
+jdp-container {
+  font-family: "yekan";
 }
 header {
   overflow: hidden;
@@ -521,8 +544,14 @@ header .header-main section.header-top .header-top-search .image-profile {
 }
 header .header-main section.header-top .header-top-search .image-profile img {
   width: 35px;
+  height: 35px;
+  border-radius: 50%;
   position: relative;
   top: 2px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center center;
+     object-position: center center;
 }
 header .header-main section.header-top .header-top-search .image-profile span {
   margin: 0 12px;
@@ -803,6 +832,7 @@ header .header-main section.header-content div.header-content-side .headline-sec
   }
   header .header-main section.header-top .header-top-search .image-profile img {
     width: 30px;
+    height: 30px;
     position: relative;
     top: 2px;
   }

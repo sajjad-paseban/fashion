@@ -16,6 +16,8 @@
         <link rel="shortcut icon" type="image/x-icon" href="{{asset('storage/setting/'.$setting->siteIcon)}}">
     @endif
 
+    <link rel="stylesheet" href="https://unpkg.com/@majidh1/jalalidatepicker/dist/jalalidatepicker.min.css">
+    
     <link rel="stylesheet" href="{{asset('dist/css/fonts.css')}}">
     <link rel="stylesheet" href="{{asset('dist/css/app.css')}}">
 </head>
@@ -31,6 +33,7 @@
     <script src="{{asset('dist/js/jquery-3.7.0.js')}}"></script>
     <script src="{{asset('dist/js/jquery.validate.js')}}"></script>
     <script src="{{asset('dist/js/app.js')}}"></script>
+    <script type="text/javascript" src="https://unpkg.com/@majidh1/jalalidatepicker/dist/jalalidatepicker.min.js"></script>
     @stack('script')
 </body>
 </html>

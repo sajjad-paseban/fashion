@@ -1,13 +1,16 @@
+@php
+    $user = App\Models\User::find(session()->get('user_id'));
+@endphp
 <header>
     <ul>
         <li class="profile">
-            <span>مونا گلچین</span>
-            <img src="https://hosseinizadeh.ir/adminlte/dist/img/user2-160x160.jpg" alt="">
+            <span>{{$user->name}}</span>
+            <img src="{{$user->photo_path ? asset('storage/user/'.$user->photo_path) : 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/2048px-Default_pfp.svg.png'}}" alt="">
             <div class="profile-menu">
                 <div class="profile-wrapper">
                     <div class="profile-wrapper-header">
-                        <img src="https://hosseinizadeh.ir/adminlte/dist/img/user2-160x160.jpg" alt="">
-                        <span>مونا گلچین</span>
+                        <img src="{{$user->photo_path ? asset('storage/user/'.$user->photo_path) : 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/2048px-Default_pfp.svg.png'}}" alt="">
+                        <span>{{$user->name}}</span>
                         <b>مدیر کل سایت</b>
                     </div>
                     <div class="profile-wrapper-body">
@@ -32,9 +35,9 @@
                                 </a>
                             </li>
                             <li>
-                                <button>
+                                <a href="{{route('profile.index')}}">
                                     پروفایل
-                                </button>
+                                </a>
                             </li>
                         </ul>
                     </div>

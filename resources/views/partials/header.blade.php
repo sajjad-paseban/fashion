@@ -12,9 +12,13 @@
             <div class="header-top-search">
                 @if (session()->has('user_id'))                    
                     <div class="image-profile">
-                        <img class="default-image-profile" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/2048px-Default_pfp.svg.png" alt="پروفایل">
+                        <img class="default-image-profile" src="{{$user->photo_path ? asset('storage/user/'.$user->photo_path) : 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/2048px-Default_pfp.svg.png'}}" alt="پروفایل">
                         <span>
-                            09152146319
+                            @if ($user->name)
+                                {{$user->name}}
+                            @else
+                                {{$user->phonenumber}}
+                            @endif
                         </span>
                         <div class="image-profile-menu">
                             <div class="image-profile-menu-wrapper">

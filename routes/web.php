@@ -67,9 +67,11 @@ Route::get('/page',function(){
 
 Route::prefix('profile')->name('profile.')->group(function(){
     Route::get('',[ProfileController::class,'index'])->name('index');
+    Route::put('profil-action/{id}',[ProfileController::class,'profile_action'])->name('profile-action');
     Route::get('change-password',[ProfileController::class,'changePassword'])->name('change-password');
     Route::get('new-password',[ProfileController::class,'newPassword'])->name('new-password');
     Route::get('password',[ProfileController::class,'password'])->name('password');
+    Route::get('delete-photo/{id}',[ProfileController::class,'delete_photo'])->name('delete-photo');
     Route::put('password_action',[ProfileController::class,'password_action'])->name('password-action');
     Route::put('change_password_action',[ProfileController::class,'changePassword_action'])->name('change-password-action');
 });
