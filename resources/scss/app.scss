@@ -125,11 +125,13 @@ section.content{
             .section-content{
                 padding-bottom: 40px;
                 display: flex;
+                flex-wrap: wrap;
                 justify-content: space-around;
                 .train-item{
                     overflow: hidden;
                     border-radius: 5px;
-                    width: 27.5%;
+                    width: calc(27.5%);
+                    margin: 25px 0;
                     box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.4);
                     .train-item-image{
                         width: 100%;
@@ -167,6 +169,7 @@ section.content{
                     }
                     .train-item-body{
                         padding: 0 20px;
+                        margin-bottom: 100px;
                         h3{
                             font-family: 'vazir';
                             text-align: right;
@@ -177,10 +180,13 @@ section.content{
                             font-family: 'yekan';
                             color: rgba(0, 0, 0, 0.7);
                             font-size: 18px;
+                            line-height: 1.25;
                         }
                     }
+                    position: relative;
                     .train-item-footer{
-                        margin-top: 100px;
+                        position: absolute;
+                        bottom: 0;
                         a,button{
                             font-family: 'vazir';
                             font-size: 15px;

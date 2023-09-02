@@ -17,4 +17,8 @@ class Seo extends Model
         'type',
         'owner_id',
     ];
+    
+    public function post(){
+        return $this->belongsTo(Post::class,'owner_id','id');
+    }
 }

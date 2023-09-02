@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Comment;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -39,6 +40,20 @@ Route::name('api')->group(function(){
             return response(['status'=>1],200);
         }else{
             return response(['status'=>0,'msg'=>'گذرواژه اشتباه می باشد'],200);
+        }
+    });
+
+    Route::post('comment/store',function(Request $request){
+        $comment = new Comment;
+        $comment->user_id = session()->get('user_id');
+        $comment->post_id = $request->get('post_id');
+        $comment->comment = $request->get('comment');
+        $comment->status = 0;
+
+        if($comment->save()){
+            return response(['status'=>1],200);
+        }else{
+            return response(['status'=>0,'msg'=>'نظر شما در سایت ثبت نگردید'],200);
         }
     });
 });

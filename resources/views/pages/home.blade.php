@@ -53,12 +53,15 @@
                     <div class="train-item">
                         <div class="train-item-image">
                             <span class="train-item-image-duration">
-                                20
+                                @php
+                                    $created_at_in_jalali = \Morilog\Jalali\CalendarUtils::convertNumbers(\Morilog\Jalali\Jalalian::fromCarbon($item->created_at)->format('Y-m-d'));
+                                @endphp
+                                {{$created_at_in_jalali}}
                             </span>
                             <span class="train-item-image-categorey">
-                                مقدمه
+                                {{$item->category->title}}
                             </span>
-                            <img src="https://learn.g2.com/hubfs/training-videos.png" alt="">
+                            <img src="{{asset('storage/post/'.$item->path)}}" alt="">
                         </div>
                         <div class="train-item-body">
                             <h3>
@@ -69,12 +72,16 @@
                             </p>
                         </div>
                         <div class="train-item-footer">
-                            <a href="{{route('page')}}">
+                            <a href="{{route('post.index',$item->seo->slug)}}">
                                 ادامه مطلب
                             </a>
                         </div>
                     </div>
                 @endforeach
+            </div>
+            <hr style="margin: 0 3.5%;">
+            <div style="display: flex;justify-content: center; padding: 20px 0;">
+                <a href="{{route('posts')}}" class="custom-btn-black">نمایش همه ویدیوهای آموشی</a>
             </div>
         </div>
     @endif

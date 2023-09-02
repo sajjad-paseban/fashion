@@ -62,8 +62,8 @@
                     </span>
                 </a>
             </li>
-            <li>
-                <a href="">
+            <li class="{{(str_contains(strtolower(URL::current()),'comment')) ? 'active' : ''}}" onclick="location.replace('{{route('admin.comment.index')}}')">
+                <a>
                     مدیریت نظرات
                     <span class="material-symbols-outlined">
                         chat

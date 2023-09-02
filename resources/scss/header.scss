@@ -170,14 +170,14 @@ header{
                                 z-index: 3;
                                 display: none;
                                 .train-menu-wrapper{
-                                    padding: 0 10px;
+                                    padding: 0 15px;
                                     margin-top: 32px;
                                     background-color: rgba(0, 0, 0, 0.96);
                                     box-shadow: 1px 1px 5px rgba(255, 255, 255, 0.1);
-                                    width: 100%;
+                                    width: calc(100% - 30px);
                                     display: flex;
                                     flex-wrap: wrap;
-                                    justify-content: space-around;
+                                    justify-content: flex-start;
                                     align-items: flex-start;
                                     ul{
                                         padding: 0;

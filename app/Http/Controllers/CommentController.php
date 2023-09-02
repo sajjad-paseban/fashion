@@ -12,7 +12,8 @@ class CommentController extends Controller
      */
     public function index()
     {
-        //
+        $comments = Comment::all();
+        return view('admin.pages.comments.index',compact('comments'));
     }
 
     /**
@@ -42,9 +43,17 @@ class CommentController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Comment $comment)
+    public function edit(int $id)
     {
-        //
+        $comment = Comment::find($id);
+        $comment->status = $comment->status ? false : true;
+        if($comment->save()){
+            session()->flash('comment_edit_form',true);     
+        }else{
+            session()->flash('comment_edit_form',false);     
+        }
+
+        return back();
     }
 
     /**
@@ -58,8 +67,14 @@ class CommentController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Comment $comment)
+    public function destroy(int $id)
     {
-        //
+        if(Comment::destroy($id)){
+            session()->flash('comment_edit_form',true);                 
+        }else{
+            session()->flash('comment_delete_form',false);     
+        }
+
+        return back();
     }
 }

@@ -140,6 +140,6 @@ class PostController extends Controller
             session()->flash('post_delete_form',false);
         }
 
-        return to_route('admin.post.index');
+        return back();
     }
 }

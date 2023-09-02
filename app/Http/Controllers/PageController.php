@@ -105,6 +105,6 @@ class PageController extends Controller
             session()->flash('page_delete_form',false);
         }
 
-        return to_route('admin.page.index');
+        return back();
     }
 }

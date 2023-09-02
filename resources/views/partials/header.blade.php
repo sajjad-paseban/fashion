@@ -8,7 +8,7 @@
 <header>
     <div class="header-cover-shadow"></div>
     <div class="header-main">
-        <section class="header-top">
+        <section class="header-top {{str_ends_with(strtolower(URL::current()),'public') ? '' : 'sticky'}}">
             <div class="header-top-search">
                 @if (session()->has('user_id'))                    
                     <div class="image-profile">
@@ -70,19 +70,19 @@
                         <div class="train-menu">
                             <div class="train-menu-wrapper">
                                 @foreach ($category as $item)
-                                @if ($item->parent_id == 0)
-                                <ul>
+                                    @if ($item->parent_id == 0)
+                                        <ul>
                                             <h2>{{$item->title}}</h2>
                                             @foreach ($item->posts as $post)
                                             <li>
-                                                    <a href="">{{$post->title}}</a>
+                                                    <a href="{{route('post.index',$post->seo->slug)}}">{{$post->title}}</a>
                                                 </li>
                                                 @endforeach()
                                             @foreach ($item->children as $child)
                                             <h3>- {{$child->title}}</h3>
                                                 @foreach ($child->posts as $post)
                                                     <li>
-                                                        <a href="">{{$post->title}}</a>
+                                                        <a href="{{route('post.index',$post->seo->slug)}}">{{$post->title}}</a>
                                                     </li>
                                                     @endforeach()
                                                     
@@ -90,14 +90,14 @@
                                                     <h4>- {{$child2->title}}</h4>
                                                     @foreach ($child2->posts as $post)
                                                         <li>
-                                                            <a href="">{{$post->title}}</a>
+                                                            <a href="{{route('post.index',$post->seo->slug)}}">{{$post->title}}</a>
                                                         </li>
                                                     @endforeach()
                                                 @endforeach
                                             @endforeach
                                         </ul>
                                     @endif
-                                    @endforeach
+                                @endforeach
                             </div>
                         </div>
                     </li>
@@ -149,7 +149,36 @@
                             <img src="https://www.iconpacks.net/icons/2/free-arrow-down-icon-3101-thumb.png" alt="">
                             <div class="train-menu">
                                 <div class="train-menu-wrapper">
-                                    <ul>
+                                    @foreach ($category as $item)
+                                        @if ($item->parent_id == 0)
+                                            <ul>
+                                                <h2>{{$item->title}}</h2>
+                                                @foreach ($item->posts as $post)
+                                                   <li>
+                                                        <a href="{{route('post.index',$post->seo->slug)}}">{{$post->title}}</a>
+                                                    </li>
+                                                @endforeach()
+                                                @foreach ($item->children as $child)
+                                                    <h3>- {{$child->title}}</h3>
+                                                    @foreach ($child->posts as $post)
+                                                        <li>
+                                                            <a href="{{route('post.index',$post->seo->slug)}}">{{$post->title}}</a>
+                                                        </li>
+                                                        @endforeach()
+                                                        
+                                                        @foreach ($child->children as $child2)
+                                                        <h4>- {{$child2->title}}</h4>
+                                                        @foreach ($child2->posts as $post)
+                                                            <li>
+                                                                <a href="{{route('post.index',$post->seo->slug)}}">{{$post->title}}</a>
+                                                            </li>
+                                                        @endforeach()
+                                                    @endforeach
+                                                @endforeach
+                                            </ul>
+                                        @endif
+                                    @endforeach
+                                    {{-- <ul>
                                         <h2>طراحی مد</h2>
                                         <li>
                                             <a href="">مقدمه</a>
@@ -166,7 +195,7 @@
                                         <li>
                                             <a href="">بخش 2</a>
                                         </li>
-                                    </ul>
+                                    </ul> --}}
                                 </div>
                             </div>
                         </li>
