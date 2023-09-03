@@ -11,7 +11,7 @@
        {!! Form::open(['route'=>['admin.user.deletePhoto',$user->id],'method'=>'PUT','class'=>'d-none','id'=>'deletePhoto']) !!}
         {!! Form::close() !!}
     @endif
-    {!! Form::model($user,['route'=>['admin.user.update',$user->id],'method'=>'PUT','id'=>'user_edit_form']) !!}
+    {!! Form::model($user,['route'=>['admin.user.update',$user->id],'method'=>'PUT','files'=>true,'id'=>'user_edit_form']) !!}
         <div class="container-fluid">
             <div class="row">
                 <div class="col">

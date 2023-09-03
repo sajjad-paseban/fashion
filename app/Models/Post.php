@@ -29,4 +29,7 @@ class Post extends Model
     public function comments(){
         return $this->hasMany(Comment::class,'post_id','id')->where('status',1);
     }
+    public function user(){
+        return $this->belongsTo(User::class,'user_id');
+    }
 }

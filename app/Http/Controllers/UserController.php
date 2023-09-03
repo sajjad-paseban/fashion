@@ -17,7 +17,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = User::latest()->get();
         return view('admin.pages.users.index',compact('users'));
     }
 
@@ -50,7 +50,7 @@ class UserController extends Controller
                 $file = $request->file('photo_path');
                 $filename = Carbon::now()->format('Y-m-d-H-i-s-').$file->getClientOriginalName();
                 $user->photo_path = $filename;            
-                $file->move('storage/user',$filename);
+                $file->move('storage/user/',$filename);
             }
 
             $result = $user->save();            

@@ -9,7 +9,7 @@
             <br>
             <div class="post-info">
                 <span>
-                    نویسنده: {{$setting->author}}
+                    نویسنده: {{$post->user ? $post->user->name : $setting->author}}
                 </span>
                 <span>
                     @php
@@ -18,7 +18,7 @@
                     تاریخ: {{$created_at_in_jalali}}
                 </span>
                 <span>
-                    دسته بندی: {{$post->category->title}}
+                    دسته بندی: {{$post->category ? $post->category->title : 'بدون دسته بندی'}}
                 </span>
             </div>
             <hr>
@@ -160,13 +160,18 @@
         try{
             $('.section img').each(function() {
                 var src = $(this).attr('src');
-                $(this).attr('src',src.replace('../../../','../'))
+                if(src.includes('../../../'))
+                    $(this).attr('src',src.replace('../../../','../'))
+                else if(src.includes('../../'))
+                    $(this).attr('src',src.replace('../../','../'))
             })
 
             $('.section video source').each(function() {
                 var src = $(this).attr('src');
                 if(src.includes('../../../'))
                     $(this).attr('src',src.replace('../../../','../'))
+                else if(src.includes('../../'))
+                    $(this).attr('src',src.replace('../../','../'))
                 else if(src.includes('//localhost:3000/localhost:3000/fashion/public/'))
                     $(this).attr('src',src.replace('//localhost:3000/localhost:3000/fashion/public/','../'))
             })

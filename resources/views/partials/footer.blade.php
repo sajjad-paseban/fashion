@@ -57,41 +57,20 @@
                     </a>
                 </li>
             </ul>
-            <ul>
-                <h3>
-                    فضای مجازی
-                </h3>
-                @if (count($social) > 0)
+            @if (count($social) > 0)
+                <ul>
+                    <h3>
+                        فضای مجازی
+                    </h3>
                     @foreach ($social as $item)
                         <li>
                             <a href="{{$item->link}}" target="_blank">
                                 {{$item->name}}
                             </a>
-                        </li>                        
+                        </li>                      
                     @endforeach
-                @else
-                    <li>
-                        <a href="">
-                            تلگرام
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#fashion-world">
-                            توییتر
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#training">
-                            اینستاگرام
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#biography">
-                            فیسبوک
-                        </a>
-                    </li>
-                @endif
-            </ul>
+                </ul>
+            @endif
         </div>
     </section>
     <hr />

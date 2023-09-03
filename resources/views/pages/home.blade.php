@@ -16,27 +16,24 @@
     {{-- <meta name="twitter:image" content="https://example.com/image.jpg"> --}}
 @endpush
 @section('content')
-
-    <div class="section fashion-world-section">
-        <h2 class="title" id="fashion-world">
-            دنیای مد و استایل
-            <hr>
-        </h2>
-        <div class="section-content">
-            <div class="section-content-bg" style="{{$section->worldPhoto ? 'background-image: url($section->worldPhoto);' : 'background-image: url(https://imageio.forbes.com/specials-images/imageserve/626535993/0x0.jpg?format=jpg&width=1200);'}}">
-                <div class="section-content-bg-cover"></div>
+    @if ($section->worldContent)
+        <div class="section fashion-world-section">
+            <h2 class="title" id="fashion-world">
+                دنیای مد و استایل
+                <hr>
+            </h2>
+            <div class="section-content">
+                <div class="section-content-bg" style="{{$section->worldPhoto ? 'background-image: url($section->worldPhoto);' : 'background-image: url(https://imageio.forbes.com/specials-images/imageserve/626535993/0x0.jpg?format=jpg&width=1200);'}}">
+                    <div class="section-content-bg-cover"></div>
+                </div>
+                @if ($section->worldContent)
+                    <p>
+                        {{$section->worldContent}}
+                    </p>                
+                @endif
             </div>
-            @if ($section->worldContent)
-                <p>
-                    {{$section->worldContent}}
-                </p>                
-            @else
-                <p>
-                    دنیای مد و استایل در هر رابطه ای باحاله
-                </p>
-            @endif
         </div>
-    </div>
+    @endif
     @if (count($posts))        
         <div class="section training-section">
             <h2 class="title" id="training">
@@ -85,29 +82,27 @@
             </div>
         </div>
     @endif
-    <div class="section biography-section">
-        <h2 class="title" id="biography">
-            بیوگرافی
-            <hr>
-        </h2>
-        <div class="section-content">
-            @if ($section->biographyPhotoPath)
-                <img src="{{asset('storage/section/'.$section->biographyPhotoPath)}}" alt="بیوگرافی - مونا گلچین">            
-            @else
-                <img src="{{asset('images/michael-guichard-SALWA-RAJAA-0478-2-removebg-preview.png')}}" alt="بیوگرافی - مونا گلچین">            
-            @endif
+    @if ($section->biographyContent)
+        <div class="section biography-section">
+            <h2 class="title" id="biography">
+                بیوگرافی
+                <hr>
+            </h2>
+            <div class="section-content">
+                @if ($section->biographyPhotoPath)
+                    <img src="{{asset('storage/section/'.$section->biographyPhotoPath)}}" alt="بیوگرافی - مونا گلچین">            
+                @else
+                    <img src="{{asset('images/michael-guichard-SALWA-RAJAA-0478-2-removebg-preview.png')}}" alt="بیوگرافی - مونا گلچین">            
+                @endif
 
-            @if ($section->biographyContent)
-                <p>
-                    {{$section->biographyContent}}
-                </p>
-            @else
-                <p>
-                    برای ایجاد این وبسایت زحمات بسیاری کشیدم
-                </p>
-            @endif
+                @if ($section->biographyContent)
+                    <p>
+                        {{$section->biographyContent}}
+                    </p>
+                @endif
+            </div>
         </div>
-    </div>
+    @endif
     @if (count($networks))    
         <div class="section social-network-section">
             <h2 class="title" id="social-networks">

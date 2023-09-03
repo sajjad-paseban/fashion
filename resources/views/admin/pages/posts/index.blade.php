@@ -42,7 +42,7 @@
                                 <tr>
                                     <td style="font-family: 'yekan';">{{$count}}</td>
                                     <td>{{$item->title}}</td>
-                                    <td>{{$item->category->title}}</td>
+                                    <td>{{$item->category ? $item->category->title : 'بدون دسته بندی'}}</td>
                                     <td>
                                         <input class="form-check-input" type="checkbox" {{($item->status == 1)? 'checked' : ''}} disabled>
                                     </td>

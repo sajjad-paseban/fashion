@@ -33,8 +33,12 @@ Route::name('api')->group(function(){
     });
 
     Route::post('user/{id}/password',function(Request $request, int $id){
+        if(User::where('id',$id)->where('status',1)->count() == 0){
+            return response(['status'=>0,'msg'=>'حساب کاربری شما غیر فعال می باشد'],200);
+        }
         $user = User::find($id);
         $passwordVerification = Hash::check($request->get('password'),$user->password);
+
         if($passwordVerification){
             session()->put('user_id',$user->id);
             return response(['status'=>1],200);

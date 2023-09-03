@@ -15,8 +15,16 @@ return new class extends Migration
             $table->id();
             $table->string('title',255)->nullable();
             $table->string('path',255)->nullable();
-            $table->integer('category_id')->nullable();
-            $table->integer('user_id')->nullable();
+            $table->foreignId('category_id')
+            ->nullable()
+            ->references('id')
+            ->on('category')
+            ->onDelete('set null');
+            $table->foreignId('user_id')
+            ->nullable()
+            ->references('id')
+            ->on('user')
+            ->onDelete('set null');
             $table->text('content')->nullable();
             $table->boolean('status')->default(true);
             $table->timestamps();

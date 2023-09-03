@@ -103,7 +103,7 @@
                                                 {{$item->title}}
                                             </td>
                                             <td>
-                                                {{\App\Models\Setting::all()->last()->author}}
+                                                {{$item->user ? $item->user->name : \App\Models\Setting::all()->last()->author}}
                                             </td>
                                             <td>
                                                 @php
