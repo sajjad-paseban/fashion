@@ -1,31 +1,46 @@
 @php
     $setting = \App\Models\Setting::first();
 @endphp
+@push('meta')
+    <title>
+        {{$data->title}} - {{$setting->siteTitle}}
+    </title>
+    <meta name="description" content="{{$data->description}}">
+    <meta name="keywords" content="{{$data->keywords}}">
+    <meta property="og:title" content="{{$data->title}} - {{$setting->siteTitle}}">
+    <meta property="og:description" content="{{$data->description}}">
+    <meta property="og:url" content="{{url()->current()}}">
+    <meta property="og:site_name" content="{{$setting->siteTitle}}">
+    <meta property="og:image" content="{{asset('storage/post/'.$data->post->path)}}">
+    <meta name="twitter:title" content="{{$data->title}} - {{$setting->siteTitle}}">
+    <meta name="twitter:description" content="{{$data->description}}">
+    <meta name="twitter:image" content="{{asset('storage/post/'.$data->post->path)}}">
+@endpush
 @extends('index')
 @section('content')
     <div class="section">
         <h2 class="title" style="margin-bottom: 0;">
-            {{$post->title}}
+            {{$data->post->title}}
             <br>
             <div class="post-info">
                 <span>
-                    نویسنده: {{$post->user ? $post->user->name : $setting->author}}
+                    نویسنده: {{$data->post->user ? $data->post->user->name : $setting->author}}
                 </span>
                 <span>
                     @php
-                        $created_at_in_jalali = \Morilog\Jalali\CalendarUtils::convertNumbers(\Morilog\Jalali\Jalalian::fromCarbon($post->created_at)->format('d-m-Y'));
+                        $created_at_in_jalali = \Morilog\Jalali\CalendarUtils::convertNumbers(\Morilog\Jalali\Jalalian::fromCarbon($data->post->created_at)->format('d-m-Y'));
                     @endphp
                     تاریخ: {{$created_at_in_jalali}}
                 </span>
                 <span>
-                    دسته بندی: {{$post->category ? $post->category->title : 'بدون دسته بندی'}}
+                    دسته بندی: {{$data->post->category ? $data->post->category->title : 'بدون دسته بندی'}}
                 </span>
             </div>
             <hr>
         </h2>
 
         <div class="section-content seo-content">
-            {!! $post->content !!}
+            {!! $data->post->content !!}
         </div>
     </div>
 
@@ -67,7 +82,7 @@
                     $.ajax({
                         url: '/fashion/public/api/comment/store',
                         data: {
-                            post_id: {{$post->id}},
+                            post_id: {{$data->post->id}},
                             comment: form.comment.value
                         },
                         method: 'POST',
@@ -91,11 +106,11 @@
             <hr>
         </h2>
         <div class="section-content" style="flex-wrap: wrap;">
-            @if (count($post->comments) > 0)
-                @foreach ($post->comments as $item)
+            @if (count($data->post->comments) > 0)
+                @foreach ($data->post->comments as $item)
                     <div class="comment-item">
                         <div class="item-top">
-                            <img src="{{$item->user->photo_path ? asset('storage/user/'.$item->user->photo_path) : 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/2048px-Default_pfp.svg.png'}}" alt="">
+                            <img src="{{$item->user->photo_path ? asset('storage/user/'.$item->user->photo_path) : asset('icons/default-user.svg.png')}}" alt="">
                             <div class="item-info">
                                 <div class="user-name">
                                     {{$item->user->name}}
@@ -155,36 +170,38 @@
     </style>
 @endsection
 @push('script')
-    <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
     <script>
         try{
-            $('.section img').each(function() {
-                var src = $(this).attr('src');
-                if(src.includes('../../../'))
-                    $(this).attr('src',src.replace('../../../','../'))
-                else if(src.includes('../../'))
-                    $(this).attr('src',src.replace('../../','../'))
-            })
-
-            $('.section video source').each(function() {
-                var src = $(this).attr('src');
-                if(src.includes('../../../'))
-                    $(this).attr('src',src.replace('../../../','../'))
-                else if(src.includes('../../'))
-                    $(this).attr('src',src.replace('../../','../'))
-                else if(src.includes('//localhost:3000/localhost:3000/fashion/public/'))
-                    $(this).attr('src',src.replace('//localhost:3000/localhost:3000/fashion/public/','../'))
-            })
-            
-            var count = 0;
-            $('.section video').each(function() {
-                // playsinline controls ="/path/to/poster.jpg"
-                count++;
-                $(this).attr('id','player'+count);
-                $(this).attr('playsinline','');
-                $(this).attr('controls','');
-                $(this).attr('data-poster','{{asset('storage/post/'.$post->path)}}');
-                new Plyr('#player'+count);
+            $(document).ready(function(){
+                $('.section img').each(function() 
+                {
+                    var src = $(this).attr('src');
+                    var first = 0
+                    var end = src.indexOf('/storage')
+                    var removeItemText = src.substr(first,end)
+                    var newSrc = src.replace(removeItemText,location.origin+'/fashion/public')
+                    $(this).attr('src',newSrc);
+                })
+    
+                $('.section video source').each(function() {
+                    var src = $(this).attr('src');
+                    var first = 0
+                    var end = src.indexOf('/storage')
+                    var removeItemText = src.substr(first,end)
+                    var newSrc = src.replace(removeItemText,location.origin+'/fashion/public')
+                    $(this).attr('src',newSrc);
+                })
+                
+                var count = 0;
+                $('.section video').each(function() {
+                    // playsinline controls ="/path/to/poster.jpg"
+                    count++;
+                    $(this).attr('id','player'+count);
+                    $(this).attr('playsinline','');
+                    $(this).attr('controls','');
+                    $(this).attr('data-poster','{{asset('storage/post/'.$data->post->path)}}');
+                    new Plyr('#player'+count);
+                })
             })
         }catch(ex){}
     </script>

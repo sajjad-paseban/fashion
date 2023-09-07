@@ -1,4 +1,3 @@
-@import url(//fonts.googleapis.com/css?family=Vibur);
 @charset "UTF-8";
 html {
   scroll-behavior: smooth;
@@ -650,7 +649,6 @@ jdp-container {
 header {
   overflow: hidden;
   height: 900px;
-  background-image: url("https://img.freepik.com/premium-vector/podium-road-pedestal-platform-illuminated-by-spotlights-black-background_213860-238.jpg?w=2000");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;

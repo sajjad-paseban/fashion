@@ -87,9 +87,19 @@ Route::get('/posts',function(){
 })->name('posts');
 
 Route::get('/post/{slug}',function($slug){
-    $post = Seo::where('type',1)->where('slug',$slug)->first()->post;
-    return view('pages.post.index',compact('post'));
+    $post = Seo::where('type',1)->where('slug',$slug);
+    if($post->count()){
+        $data = $post->first();
+        return view('pages.post.index',compact('data'));
+    }
+
+    return redirect('404');
+    
 })->name('post.index')->middleware('Authenticated');
+
+Route::get('404',function(){
+    return view('error.404');
+});
 
 Route::prefix('profile')->name('profile.')->group(function(){
     Route::get('',[ProfileController::class,'index'])->name('index');

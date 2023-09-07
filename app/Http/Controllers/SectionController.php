@@ -110,7 +110,6 @@ class SectionController extends Controller
 
         if($section->save()){
             $request->session()->flash('section_edit_form',true);
-            Log::create(['table_name'=>'section','record_id'=>$id,'user_id'=>1,'method'=>'update']);
         }else{
             $request->session()->flash('section_edit_form',false);
         }
@@ -141,7 +140,6 @@ class SectionController extends Controller
 
         if($section->save()){
             session()->flash('section_delete_form',true);
-            Log::create(['table_name'=>'section','record_id'=>$section->id,'user_id'=>1,'method'=>'delete']);
         }else{
             session()->flash('section_delete_form',false);
         }

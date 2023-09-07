@@ -1,3 +1,22 @@
+@php
+    $setting = \App\Models\Setting::get()->last();
+@endphp
+@push('meta')
+    <title>
+        مدیریت پروفایل - {{$setting->siteTitle}}
+    </title>
+    {{-- <meta name="description" content="{{$setting->description}}"> --}}
+    {{-- <meta name="keywords" content="{{$setting->keywords}}"> --}}
+    {{-- <meta property="og:title" content="مطالب آموزشی - {{$setting->siteTitle}}"> --}}
+    {{-- <meta property="og:description" content="{{$setting->description}}"> --}}
+    {{-- <meta property="og:url" content="{{url()->current()}}"> --}}
+    {{-- <meta property="og:type" content="website"> --}}
+    {{-- <meta property="og:site_name" content="{{$setting->siteTitle}}"> --}}
+    {{-- <meta property="og:image" content="{{asset('storage/setting/'.$setting->siteIcon)}}"> --}}
+    {{-- <meta name="twitter:title" content="مطالب آموزشی - {{$setting->siteTitle}}"> --}}
+    {{-- <meta name="twitter:description" content="{{$setting->description}}"> --}}
+    {{-- <meta name="twitter:image" content="{{asset('storage/setting/'.$setting->siteIcon)}}"> --}}
+@endpush
 @extends('index')
 @section('content')
     @php
@@ -19,7 +38,7 @@
                     @if ($user->photo_path)
                         <img src="{{asset('storage/user/'.$user->photo_path)}}" class="image-profile" id="photo_img_tag" alt="">                    
                     @else
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/2048px-Default_pfp.svg.png" id="photo_img_tag" class="image-profile" alt="">
+                        <img src="{{asset('icons/default-user.svg.png')}}" id="photo_img_tag" class="image-profile" alt="">
                     @endif
                     {!! Form::label('photo_path','آپلود تصویر') !!}
                     @if ($user->photo_path)

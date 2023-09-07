@@ -10,10 +10,10 @@
     <meta property="og:url" content="{{url()->current()}}">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="{{$setting->siteTitle}}">
-    {{-- <meta property="og:image" content="https://example.com/image.jpg"> --}}
+    <meta property="og:image" content="{{asset('storage/setting/'.$setting->siteIcon)}}">
     <meta name="twitter:title" content="صفحه اصلی - {{$setting->siteTitle}}">
     <meta name="twitter:description" content="{{$setting->description}}">
-    {{-- <meta name="twitter:image" content="https://example.com/image.jpg"> --}}
+    <meta name="twitter:image" content="{{asset('storage/setting/'.$setting->siteIcon)}}">
 @endpush
 @section('content')
     @if ($section->worldContent)

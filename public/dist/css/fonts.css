@@ -7,6 +7,10 @@
     src: url('../../fonts/Sans a4fran3.ttf');
 }
 @font-face {
+    font-family: 'Vibur';
+    src: url('../../fonts/Vibur.woff2');
+}
+@font-face {
     font-family: 'tanha';
     src: url('../../fonts/Tanha.ttf');
 }

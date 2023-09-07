@@ -56,7 +56,6 @@ class UserController extends Controller
             $result = $user->save();            
             if($result){
                 $request->session()->flash('user_create_form',true);
-                Log::create(['table_name'=>'user','record_id'=>$user->id,'user_id'=>1,'method'=>'create']);
             }else{
                 $request->session()->flash('user_create_form',false);
             }
@@ -111,8 +110,7 @@ class UserController extends Controller
             $result = $user->save();            
             if($result){
                 $request->session()->flash('user_edit_form',true);
-                Log::create(['table_name'=>'user','record_id'=>$id,'user_id'=>1,'method'=>'edit']);
-            }else{
+}else{
                 $request->session()->flash('user_edit_form',false);
             }
         }catch(Exception $ex){
@@ -130,7 +128,6 @@ class UserController extends Controller
         $filename = User::find($id)->photo_path;
         if(User::destroy($id)){
             session()->flash('user_delete_form',true);
-            Log::create(['table_name'=>'user','record_id'=>$id,'user_id'=>1,'method'=>'delete']);
             File::delete('storage/social/'.$filename);
         }
         else{

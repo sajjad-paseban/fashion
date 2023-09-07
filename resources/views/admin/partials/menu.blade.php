@@ -16,7 +16,7 @@
                     <span class="green-icon"></span>
                 </span>
             </div>
-            <img src="{{$user->photo_path ? asset('storage/user/'.$user->photo_path) : 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/2048px-Default_pfp.svg.png'}}" alt="">
+            <img src="{{$user->photo_path ? asset('storage/user/'.$user->photo_path) : asset('icons/default-user.svg.png')}}" alt="">
         </div>
         <div class="menu-header-search">
             <form action="">

@@ -63,7 +63,6 @@ class SettingController extends Controller
         $result = Setting::where('id',$id)->update($request->except(['_method','_token']));
         if($result){
             session()->flash('setting_edit_form',true);
-            Log::create(['table_name'=>'setting','record_id'=>$id,'user_id'=>1,'method'=>'update']);
         }
         else{
             session()->flash('setting_edit_form',false);
@@ -78,7 +77,6 @@ class SettingController extends Controller
         $result = Setting::where('id',$id)->update($request->except(['_method','_token']));
         if($result){
             session()->flash('setting_siteTitle_edit_form',true);
-            Log::create(['table_name'=>'setting','record_id'=>$id,'user_id'=>1,'method'=>'update']);
         }
         else{
             session()->flash('setting_siteTitle_edit_form',false);
@@ -102,7 +100,6 @@ class SettingController extends Controller
 
         if($setting->save()){
             session()->flash('setting_siteIcon_edit_form',true);
-            Log::create(['table_name'=>'setting','record_id'=>$id,'user_id'=>1,'method'=>'updated site icon']);
         }else{
             session()->flash('setting_siteIcon_edit_form',false);
         }
@@ -126,7 +123,6 @@ class SettingController extends Controller
 
         if($setting->save()){
             session()->flash('setting_siteLogo_edit_form',true);
-            Log::create(['table_name'=>'setting','record_id'=>$id,'user_id'=>1,'method'=>'updated site logo']);
         }else{
             session()->flash('setting_siteLogo_edit_form',false);
         }
@@ -140,7 +136,6 @@ class SettingController extends Controller
         $result = Setting::where('id',$id)->update($request->except(['_method','_token']));
         if($result){
             session()->flash('setting_logoTitle_edit_form',true);
-            Log::create(['table_name'=>'setting','record_id'=>$id,'user_id'=>1,'method'=>'update']);
         }
         else{
             session()->flash('setting_logoTitle_edit_form',false);

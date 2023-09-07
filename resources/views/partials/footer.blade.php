@@ -8,7 +8,7 @@
             @if ($setting->siteLogo)
                 <img src="{{asset('storage/setting/'.$setting->siteLogo)}}" alt="فوتر - لوگو">
             @else
-                <img src="https://icon-library.com/images/hanger-icon/hanger-icon-17.jpg" alt="فوتر - لوگو">
+                <img src="{{asset('images/hanger-icon-17.jpg')}}" alt="فوتر - لوگو">
             @endif
 
             @if ($setting->logoTitle)

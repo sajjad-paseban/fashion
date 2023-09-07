@@ -5,14 +5,14 @@
     $category = \App\Models\Category::all();
 
 @endphp
-<header>
+<header style="background-image: url('{{asset('images/header-background.avif')}}')">
     <div class="header-cover-shadow"></div>
     <div class="header-main">
         <section class="header-top {{str_ends_with(strtolower(URL::current()),'public') ? '' : 'sticky'}}">
             <div class="header-top-search">
                 @if (session()->has('user_id'))                    
                     <div class="image-profile">
-                        <img class="default-image-profile" src="{{$user->photo_path ? asset('storage/user/'.$user->photo_path) : 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/2048px-Default_pfp.svg.png'}}" alt="پروفایل">
+                        <img class="default-image-profile" src="{{$user->photo_path ? asset('storage/user/'.$user->photo_path) : asset('icons/default-user.svg.png')}}" alt="پروفایل">
                         <span>
                             @if ($user->name)
                                 {{$user->name}}
@@ -66,7 +66,7 @@
                     </li>
                     <li id="train-list-item">
                         <a href="{{(str_ends_with(strtolower(URL::current()),'public')) ? '#training' : route('home') . '/#training'}}">آموزش</a>
-                        <img src="https://www.iconpacks.net/icons/2/free-arrow-down-icon-3101-thumb.png" alt="">
+                        <img src="{{asset('icons/arrow-down.png')}}" alt="">
                         <div class="train-menu">
                             <div class="train-menu-wrapper">
                                 @foreach ($category as $item)
@@ -129,7 +129,7 @@
                     @if ($setting->siteLogo)
                     <img onclick="location.replace('{{route('home')}}')" src="{{asset('storage/setting/'.$setting->siteLogo)}}" alt="لوگو">                
                     @else
-                    <img onclick="location.replace('{{route('home')}}')" src="https://icon-library.com/images/hanger-icon/hanger-icon-17.jpg" alt="لوگو">                
+                    <img onclick="location.replace('{{route('home')}}')" src="{{asset('images/hanger-icon-17.jpg')}}" alt="لوگو">                
                     @endif
                 </div>
             <div class="header-top-menu-mobile">
@@ -146,7 +146,7 @@
                         </li>
                         <li id="train-list-item">
                             <a href="{{(str_ends_with(strtolower(URL::current()),'public')) ? '#training' : route('home') . '/#training'}}">آموزش</a>
-                            <img src="https://www.iconpacks.net/icons/2/free-arrow-down-icon-3101-thumb.png" alt="">
+                            <img src="{{asset('icons/arrow-down.png')}}" alt="">
                             <div class="train-menu">
                                 <div class="train-menu-wrapper">
                                     @foreach ($category as $item)

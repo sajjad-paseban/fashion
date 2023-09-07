@@ -111,6 +111,29 @@
         <script>
             tinymce.init({
                 selector: '#content',
+                setup: function(editor){
+                    editor.on('init',function(){
+                        try{
+                            $(editor.getBody()).find('img').each(function() {
+                                var src = $(this).attr('src');
+                                var first = 0
+                                var end = src.indexOf('/storage')
+                                var removeItemText = src.substr(first,end)
+                                var newSrc = src.replace(removeItemText,location.origin+'/fashion/public')
+                                $(this).attr('src',newSrc);
+                            })
+                            
+                            $(editor.getBody()).find('source').each(function() {
+                                var src = $(this).attr('src');
+                                var first = 0
+                                var end = src.indexOf('/storage')
+                                var removeItemText = src.substr(first,end)
+                                var newSrc = src.replace(removeItemText,location.origin+'/fashion/public')
+                                $(this).attr('src',newSrc);
+                            })
+                        }catch(ex){}
+                    })
+                },
                 height: 500,
                 resize: false,
                 placeholder: 'بنویس...',

@@ -7,6 +7,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta property="og:locale" content="fa_IR">
+    <meta property="og:type" content="website">
     <meta name="author" content="{{$setting->author}}">
     <meta name="robots" content="index, follow">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -15,10 +17,10 @@
     @if ($setting->siteIcon)
         <link rel="shortcut icon" type="image/x-icon" href="{{asset('storage/setting/'.$setting->siteIcon)}}">
     @endif
-
-    <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
-    <link rel="stylesheet" href="https://unpkg.com/@majidh1/jalalidatepicker/dist/jalalidatepicker.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />    
+    <link href="https://www.monagolchin.com/" rel="canonical">
+    <link rel="stylesheet" href="{{asset('utils/plyr/plyr.css')}}" />
+    <link rel="stylesheet" href="{{asset('utils/datepicker/jalalidatepicker.min.css')}}">
+    <link rel="stylesheet" href="{{asset('utils/google_icons/icons.css')}}" />    
     <link rel="stylesheet" href="{{asset('dist/css/fonts.css')}}">
     <link rel="stylesheet" href="{{asset('dist/css/app.css')}}">
     <body>
@@ -28,13 +30,14 @@
         @yield('content')
     </section>
     <div class="up-arrow">
-        <img src="https://cdn-icons-png.flaticon.com/512/37/37926.png" alt="بالا">
+        <img src="{{asset('icons/up_arrow.png')}}" alt="بالا">
     </div>
     @include('partials.footer')
     <script src="{{asset('dist/js/jquery-3.7.0.js')}}"></script>
     <script src="{{asset('dist/js/jquery.validate.js')}}"></script>
     <script src="{{asset('dist/js/app.js')}}"></script>
-    <script type="text/javascript" src="https://unpkg.com/@majidh1/jalalidatepicker/dist/jalalidatepicker.min.js"></script>
+    <script src="{{asset('utils/plyr/plyr.js')}}"></script>
+    <script type="text/javascript" src="{{asset('utils/datepicker/jalalidatepicker.min.js')}}"></script>
     @stack('script')
 </body>
 </html>

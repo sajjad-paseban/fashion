@@ -40,7 +40,6 @@ class MediaController extends Controller
 
         if($media->save() && $file->move('storage/media/',$filename)){
             $request->session()->flash('media_create_form',true);
-            Log::create(['table_name'=>'media','record_id'=>$media->id,'user_id'=>1,'method'=>'create']);
             return response()->json('File uploaded successfully', 200);
         }else{
             $request->session()->flash('media_create_form',false);
@@ -80,7 +79,6 @@ class MediaController extends Controller
         $filename = Media::find($id)->path;
         if(Media::destroy($id)){
             session()->flash('media_delete_form',true);
-            Log::create(['table_name'=>'media','record_id'=>$id,'user_id'=>1,'method'=>'delete']);
             File::delete('storage/media/'.$filename);
         }
         else{

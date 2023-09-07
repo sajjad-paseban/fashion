@@ -36,7 +36,6 @@ class CategoryController extends Controller
         $result = Category::create($request->except(['_method','_token']));
         if($result){
             $request->session()->flash('category_create_form',true);
-            Log::create(['table_name'=>'category','record_id'=>$result->id,'user_id'=>1,'method'=>'create']);
         }else{
             $request->session()->flash('category_create_form',false);
         }
@@ -71,7 +70,6 @@ class CategoryController extends Controller
         $result = Category::where('id',$id)->update($request->except(['_method','_token']));
         if($result){
             $request->session()->flash('category_edit_form',true);
-            Log::create(['table_name'=>'category','record_id'=>$id,'user_id'=>1,'method'=>'update']);
         }else{
             $request->session()->flash('category_edit_form',false);
         }
@@ -87,7 +85,6 @@ class CategoryController extends Controller
         $result = Category::destroy($id);
         if($result){
             session()->flash('category_delete_form',true);
-            Log::create(['table_name'=>'category','record_id'=>$id,'user_id'=>1,'method'=>'delete']);
         }else{
             session()->flash('category_delete_form',false);
         }

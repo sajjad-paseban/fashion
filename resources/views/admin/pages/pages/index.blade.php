@@ -26,8 +26,6 @@
                                 <th>عملیات</th>
                                 <th>تاریخ ثیت</th>
                                 <th>تاریخ آخرین ویرایش</th>
-                                <th>کاربر ثبت کننده</th>
-                                <th>کاربر ویرایش کننده</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -56,8 +54,6 @@
                                     </td>
                                     <td>{{$item->created_at}}</td>
                                     <td>{{$item->updated_at}}</td>
-                                    <td>-</td>
-                                    <td>-</td>
                                 </tr>
                             @endforeach
                         </tbody>

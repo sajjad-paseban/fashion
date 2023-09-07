@@ -1,10 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    @php
+        $setting = \App\Models\Setting::get()->last();
+    @endphp
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>ورود - طراحی مد با مونا</title>
+    <meta property="og:locale" content="fa_IR">
+    <meta property="og:type" content="website">
+    <meta name="author" content="{{$setting->author}}">
+    <meta name="robots" content="index, follow">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="{{$setting->siteTitle}}">
+    <title>
+        ورود - {{$setting->siteTitle}}
+    </title>
+    <meta name="description" content="{{$setting->description}}">
+    <meta name="keywords" content="{{$setting->keywords}}">
+    <meta property="og:title" content="ورود - {{$setting->siteTitle}}">
+    <meta property="og:description" content="{{$setting->description}}">
+    <meta property="og:url" content="{{url()->current()}}">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="{{$setting->siteTitle}}">
+    <meta property="og:image" content="{{asset('storage/setting/'.$setting->siteIcon)}}">
+    <meta name="twitter:title" content="ورود - {{$setting->siteTitle}}">
+    <meta name="twitter:description" content="{{$setting->description}}">
+    <meta name="twitter:image" content="{{asset('storage/setting/'.$setting->siteIcon)}}">
+    @if ($setting->siteIcon)
+        <link rel="shortcut icon" type="image/x-icon" href="{{asset('storage/setting/'.$setting->siteIcon)}}">
+    @endif    
     <link rel="stylesheet" href="{{asset('dist/css/fonts.css')}}">
     <link rel="stylesheet" href="{{asset('dist/css/app.css')}}">
 </head>

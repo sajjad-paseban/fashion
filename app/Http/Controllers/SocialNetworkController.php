@@ -42,7 +42,6 @@ class SocialNetworkController extends Controller
         $network->status = $request->get('status')? true : false;
         if($network->save()){
             $file->move('storage/social/',$filename);
-            Log::create(['table_name'=>'social_network','record_id'=>$network->id,'user_id'=>1,'method'=>'insert']);
             $request->session()->flash('social_create_form',true);
             return to_route('admin.social.index');
         }
@@ -89,7 +88,6 @@ class SocialNetworkController extends Controller
 
         if($network->save()){
             $request->session()->flash('social_edit_form',true);
-            Log::create(['table_name'=>'social_network','record_id'=>$network->id,'user_id'=>1,'method'=>'update']);
             return to_route('admin.social.index');
         }
 
@@ -106,7 +104,6 @@ class SocialNetworkController extends Controller
         $filename = SocialNetwork::find($id)->icon_path;
         if(SocialNetwork::destroy($id)){
             session()->flash('social_delete_form',true);
-            Log::create(['table_name'=>'social_network','record_id'=>$id,'user_id'=>1,'method'=>'delete']);
             File::delete('storage/social/'.$filename);
         }
         else{

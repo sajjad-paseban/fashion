@@ -61,7 +61,6 @@ class PostController extends Controller
             $seo->owner_id = $post->id;
             $seo->save();
             $request->session()->flash('post_create_form',true);
-            Log::create(['table_name'=>'post','record_id'=>$post->id,'user_id'=>1,'method'=>'create']);
         }else{
             $request->session()->flash('post_create_form',false);
         }
@@ -117,7 +116,6 @@ class PostController extends Controller
             $seo->description = $request->get('description');
             $seo->save();
             $request->session()->flash('post_edit_form',true);
-            Log::create(['table_name'=>'post','record_id'=>$id,'user_id'=>1,'method'=>'update']);
         }else{
             $request->session()->flash('post_edit_form',false);
         }
@@ -135,7 +133,6 @@ class PostController extends Controller
             Seo::where('type',1)->where('owner_id',$id)->delete();
             File::delete('storage/post/'.$filename);
             session()->flash('post_delete_form',true);
-            Log::create(['table_name'=>'post','record_id'=>$id,'user_id'=>1,'method'=>'delete']);
         }else{
             session()->flash('post_delete_form',false);
         }

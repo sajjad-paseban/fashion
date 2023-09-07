@@ -63,12 +63,6 @@
                                     <th>
                                         تاریخ آخرین ویرایش
                                     </th>
-                                    <th>
-                                        کاربر ثبت کننده
-                                    </th>
-                                    <th>
-                                        کاربر ویرایش کننده
-                                    </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -78,8 +72,6 @@
                                 @endphp
                                 @foreach ($networks as $item)
                                     @php
-                                        $user_insert = App\Models\Log::where(['table_name'=>'social_network','record_id'=>$item->id])->first();
-                                        $user_update = App\Models\Log::where(['table_name'=>'social_network','record_id'=>$item->id])->latest('id')->first();
                                         $count++;
                                     @endphp
                                     <tr>
@@ -117,12 +109,6 @@
                                         </td>
                                         <td>
                                             {{$item->updated_at ? $item->updated_at : '-'}}
-                                        </td>
-                                        <td>
-                                            {{$user_insert ? $user_insert->user_id : '-'}}
-                                        </td>
-                                        <td>
-                                            {{$user_update ? $user_update->user_id : '-'}}
                                         </td>
                                     </tr>
                                 @endforeach

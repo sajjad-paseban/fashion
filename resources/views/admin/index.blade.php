@@ -11,9 +11,9 @@
     <link href="{{asset('admin/assets/bootstrap/css/bootstrap-utilities.rtl.min.css')}}" rel="stylesheet">
     <link href="{{asset('admin/css/app.css')}}" rel="stylesheet">
     <link href="{{asset('dist/css/fonts.css')}}" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+    <link rel="stylesheet" href="{{asset('utils/google_icons/icons.css')}}" />
+    <link rel="stylesheet" href="{{asset('utils/datatables/jquery.dataTables.css')}}" />
+    <link rel="stylesheet" href="{{asset('utils/modal/jquery-confirm.min.css')}}">
     @stack('style')
 
 </head>
@@ -30,8 +30,8 @@
     <script src="{{asset('admin/assets/bootstrap/js/bootstrap.min.js')}}"></script>
     <script src="{{asset('dist/js/jquery-3.7.0.js')}}"></script>
     <script src="{{asset('dist/js/jquery.validate.js')}}"></script>
-    <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+    <script src="{{asset('utils/datatables/jquery.dataTables.js')}}"></script>
+    <script src="{{asset('utils/modal/jquery-confirm.min.js')}}"></script>
     <script type="module" src="{{asset('admin/js/app.js')}}"></script>
     @stack('script')
 </body>

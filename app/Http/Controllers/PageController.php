@@ -43,7 +43,6 @@ class PageController extends Controller
             $seo->owner_id = $result->id;
             $seo->save();
             $request->session()->flash('page_create_form',true);
-            Log::create(['table_name'=>'page','record_id'=>$result->id,'user_id'=>1,'method'=>'create']);
         }else{
             $request->session()->flash('page_create_form',false);
         }
@@ -84,7 +83,6 @@ class PageController extends Controller
             $seo->description = $request->get('description');
             $seo->save();
             $request->session()->flash('post_edit_form',true);
-            Log::create(['table_name'=>'page','record_id'=>$id,'user_id'=>1,'method'=>'update']);
         }else{
             $request->session()->flash('post_edit_form',false);
         }
@@ -100,7 +98,6 @@ class PageController extends Controller
         if($result){
             Seo::where('type',2)->where('owner_id',$id)->delete();
             session()->flash('page_delete_form',true);
-            Log::create(['table_name'=>'page','record_id'=>$id,'user_id'=>1,'method'=>'delete']);
         }else{
             session()->flash('page_delete_form',false);
         }
