@@ -88,6 +88,10 @@
                         method: 'POST',
                         success: function(res){
                             if(res.status == 1){
+                                new Toast({
+                                    message:'نظر شما با موفقیت ثبت شد',
+                                    type:'s'
+                                })
                                 console.log(1);
                             }else{
                                 console.log(2);
@@ -173,7 +177,7 @@
     <script>
         try{
             $(document).ready(function(){
-                $('.section img').each(function() 
+                $('.seo-content img').each(function() 
                 {
                     var src = $(this).attr('src');
                     var first = 0

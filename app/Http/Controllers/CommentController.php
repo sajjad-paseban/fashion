@@ -70,7 +70,7 @@ class CommentController extends Controller
     public function destroy(int $id)
     {
         if(Comment::destroy($id)){
-            session()->flash('comment_edit_form',true);                 
+            session()->flash('comment_delete_form',true);                 
         }else{
             session()->flash('comment_delete_form',false);     
         }

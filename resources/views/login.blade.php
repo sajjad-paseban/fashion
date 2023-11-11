@@ -32,6 +32,7 @@
     @endif    
     <link rel="stylesheet" href="{{asset('dist/css/fonts.css')}}">
     <link rel="stylesheet" href="{{asset('dist/css/app.css')}}">
+    <link rel="stylesheet" href="{{asset('admin/css/Toast.css')}}">
 </head>
 <body class="login">
     <div class="login-background-cover"></div>
@@ -152,5 +153,7 @@
 
     </script>
     <script src="{{asset('dist/js/login.js')}}"></script>
+    <script src="{{asset('admin/js/Toast.js')}}"></script>
+    @include('notification')
 </body>
 </html>

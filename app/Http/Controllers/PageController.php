@@ -82,9 +82,9 @@ class PageController extends Controller
             $seo->keywords = $request->get('keywords');
             $seo->description = $request->get('description');
             $seo->save();
-            $request->session()->flash('post_edit_form',true);
+            $request->session()->flash('page_edit_form',true);
         }else{
-            $request->session()->flash('post_edit_form',false);
+            $request->session()->flash('page_edit_form',false);
         }
         return to_route('admin.page.index');
     }

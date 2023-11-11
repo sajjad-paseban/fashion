@@ -33,7 +33,7 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <iframe src="http://localhost:3000/fashion/public/administrator/media" style="border:none;height: 100vh; width:100%;" title="Iframe Example"></iframe>
+                                    <iframe src="http://localhost/fashion/public/administrator/media" style="border:none;height: 100vh; width:100%;" title="Iframe Example"></iframe>
                                 </div>
                             </div>
                         </div>

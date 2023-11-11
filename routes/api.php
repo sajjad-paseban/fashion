@@ -44,6 +44,7 @@ Route::name('api')->group(function(){
             session()->put('user_id',$user->id);
             return response(['status'=>1],200);
         }else{
+            session()->flash('login_error',true);
             return response(['status'=>0,'msg'=>'گذرواژه اشتباه می باشد'],200);
         }
     });
@@ -56,6 +57,7 @@ Route::name('api')->group(function(){
         $comment->status = 0;
 
         if($comment->save()){
+            session()->flash('comment_create_form',true);
             return response(['status'=>1],200);
         }else{
             return response(['status'=>0,'msg'=>'نظر شما در سایت ثبت نگردید'],200);

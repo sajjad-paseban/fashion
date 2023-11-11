@@ -23,8 +23,9 @@
     <link rel="stylesheet" href="{{asset('utils/google_icons/icons.css')}}" />    
     <link rel="stylesheet" href="{{asset('dist/css/fonts.css')}}">
     <link rel="stylesheet" href="{{asset('dist/css/app.css')}}">
-    <body>
+    <link rel="stylesheet" href="{{asset('admin/css/Toast.css')}}">
 </head>
+<body>
     @include('partials.header')
     <section class="content">
         @yield('content')
@@ -37,7 +38,9 @@
     <script src="{{asset('dist/js/jquery.validate.js')}}"></script>
     <script src="{{asset('dist/js/app.js')}}"></script>
     <script src="{{asset('utils/plyr/plyr.js')}}"></script>
+    <script src="{{asset('admin/js/Toast.js')}}"></script>
     <script type="text/javascript" src="{{asset('utils/datepicker/jalalidatepicker.min.js')}}"></script>
     @stack('script')
+    @include('notification')
 </body>
 </html>

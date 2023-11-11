@@ -175,6 +175,8 @@ section.content div.section.training-section .section-content .train-item .train
 }
 section.content div.section.training-section .section-content .train-item .train-item-image img {
   width: inherit;
+  height: 200px;
+  object-fit: cover;
 }
 section.content div.section.training-section .section-content .train-item .train-item-body {
   padding: 0 20px;
