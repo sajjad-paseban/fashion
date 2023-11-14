@@ -23,7 +23,7 @@
                 <hr>
             </h2>
             <div class="section-content">
-                <div class="section-content-bg" style="{{$section->worldPhoto ? 'background-image: url($section->worldPhoto);' : 'background-image: url(https://imageio.forbes.com/specials-images/imageserve/626535993/0x0.jpg?format=jpg&width=1200);'}}">
+                <div class="section-content-bg" style="{{$section->worldPhoto ? 'background-image: url('.asset('storage/section/'.$section->worldPhoto).');' : 'background-image: url(https://imageio.forbes.com/specials-images/imageserve/626535993/0x0.jpg?format=jpg&width=1200);'}}">
                     <div class="section-content-bg-cover"></div>
                 </div>
                 @if ($section->worldContent)
