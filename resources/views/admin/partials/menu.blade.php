@@ -106,6 +106,14 @@
                 </span>
                 <div class="sub-menu">
                     <ul>
+                        <li class="{{(str_contains(strtolower(URL::current()),'payment_gateways')) ? 'active' : ''}}" onclick="location.replace('{{route('admin.payment_gateways.index')}}')">
+                            <a>
+                                مدیریت درگاه های پرداخت
+                                <span class="material-symbols-outlined">
+                                    circle
+                                </span>
+                            </a>
+                        </li>
                         <li class="{{(str_contains(strtolower(URL::current()),'social')) ? 'active' : ''}}" onclick="location.replace('{{route('admin.social.index')}}')">
                             <a>
                                 فضای مجازی

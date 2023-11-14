@@ -17,6 +17,10 @@ return new class extends Migration
             ->nullable()
             ->references('id')
             ->on('post');
+            $table->foreignId('user_id')
+            ->nullable()
+            ->references('id')
+            ->on('user');
             $table->bigInteger('amount')
             ->nullable();
             $table->string('trans_id',255)

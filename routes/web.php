@@ -4,6 +4,9 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\PaymentGatewaysController;
+use App\Http\Controllers\PaymentItemsController;
+use App\Http\Controllers\PaymentLogsController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SectionController;
@@ -58,6 +61,9 @@ Route::middleware(['Initial','Authenticated','IsAdmin'])->group(function(){
             'post' => PostController::class,
             'page' => PageController::class,
             'social' => SocialNetworkController::class,
+            'payment_gateways' => PaymentGatewaysController::class,
+            'payment_items' => PaymentItemsController::class,
+            'payment_logs' => PaymentLogsController::class,
             'setting'=> SettingController::class,
             'category'=> CategoryController::class,
             'user'=> UserController::class,
