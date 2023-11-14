@@ -16,7 +16,8 @@ class Post extends Model
         'user_id',
         'content',
         'status',
-        'path'
+        'path',
+        'is_payable'
     ];
 
     public function seo():HasOne{
