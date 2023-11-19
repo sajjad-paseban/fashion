@@ -43,7 +43,7 @@
                                 @endphp
                                 <tr>
                                     <td style="font-family: 'yekan';">{{$count}}</td>
-                                    <td><img src="{{$item->photo_path ? asset('storage/user/'.$item->photo_path) : 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/1024px-Default_pfp.svg.png'}}" width="30" alt=""></td>
+                                    <td><img src="{{$item->photo_path ? asset('storage/user/'.$item->photo_path) : 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/1024px-Default_pfp.svg.png'}}" width="25" height="25" style="border-radius: 50px; object-fit: cover;" alt=""></td>
                                     <td>{{$item->name}}</td>
                                     <td>{{$item->phonenumber}}</td>
                                     <td>{{$item->email}}</td>

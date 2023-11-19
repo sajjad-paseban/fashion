@@ -18,12 +18,12 @@
             </div>
             <div class="row">
                 <div class="col">
-                    <x-box title="پست جدید" :buttons="$buttons">
+                    <x-box title="درگاه پرداخت جدید" :buttons="$buttons">
                         <div class="row">
                             <div class="col">
                                 <div class="form-group my-3">
-                                    {!! Form::label('category_id','سیستم درگاه پرداخت') !!}
-                                    <select name="category_id" id="category_id" class="form-select form-select-sm" autocomplete="off">
+                                    {!! Form::label('payment_system_id','سیستم درگاه پرداخت') !!}
+                                    <select name="payment_system_id" id="payment_system_id" class="form-select form-select-sm" autocomplete="off">
                                         <option value="" selected>یک گزینه را انتخاب نمایید</option>
                                         @foreach ($payment_systems as $item)
                                             <option value="{{$item->id}}">{{$item->title}}</option>
@@ -61,6 +61,11 @@
                                       </div>
                                     <div>
                                 </div>
+                                <div class="form-group mb-5">
+                                    <button class="btn btn-sm btn-primary" style="position: relative;top: 26px;">
+                                        ذخیره
+                                    </button>
+                                </div>    
                             </div>
                         </div>
                     </x-box>
@@ -72,43 +77,52 @@
         <script>
             $('#payment_gateways_create_form').validate({
                 rules:{
+                    payment_system_id:{
+                        required: true
+                    },
                     title:{
                         required: true
                     },
-                    category_id:{
+                    img_path:{
                         required: true
-                    },
-                    seoTitle:{
-                        required: true,
-                        minlength: 10,
-                        maxlength: 60
                     },
                     slug:{
                         required: true
                     },
-                    description:{
-                        minlength: 20,
-                        maxlength: 160
+                    callback_url:{
+                        required: true
+                    },
+                    pin:{
+                        required: true
+                    },
+                    account_number:{
+                        required: true
+                    },
+                    code:{
+                        required: true
                     }
                 },
                 messages:{
+                    payment_system_id:{
+                        required: 'یکی از گزینه های زیر را انتخاب نمایید'
+                    },
                     title:{
-                        required: 'فیلد عنوان اجباری می باشد.'
+                        required: 'فیلد عنوان اجباری می باشد'
                     },
-                    category_id:{
-                        required: 'فیلد دسته بندی اجباری می باشد.'
+                    img_path:{
+                        required: 'آیکونی برای این درگاه انتخاب کنید'
                     },
-                    seoTitle:{
-                        required: 'فیلد عنوان سئو اجباری می باشد.',
-                        minlength: 'طول فیلد عنوان سئو حداقل 10 کاراکتر می باشد.',
-                        maxlength: 'طول فیلد عنوان سئو حداکثر 60 کاراکتر می باشد.'
+                    callback_url:{
+                        required: 'فیلد پیوند برگشتی اجباری می باشد'
                     },
-                    slug:{
-                        required: 'فیلد اسلاگ اجباری می باشد'
+                    pin:{
+                        required: 'فیلد پین اجباری می باشد'
                     },
-                    description:{
-                        minlength: 'طول فیلد توضیحات حداقل 20 کاراکتر می باشد.',
-                        maxlength: 'طول فیلد توضیحات حداکثر 160 کاراکتر می باشد.'
+                    account_number:{
+                        required: 'فیلد شماره حساب کاربری اجباری می باشد'
+                    },
+                    code:{
+                        required: 'فیلد کد رمزنگاری اجباری می باشد'
                     }
                 },
                 submitHandler: function(form){

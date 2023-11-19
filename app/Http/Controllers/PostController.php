@@ -47,8 +47,9 @@ class PostController extends Controller
         $post->title = $request->get('title');
         $post->content = $request->get('content');
         $post->category_id = $request->get('category_id');
-        $post->user_id = 1;
+        $post->user_id = $request->session()->get('user_id');
         $post->status = $request->get('status')? true : false;
+        $post->is_payable = $request->get('is_payable')? true : false;
 
         $result = $post->save();
         if($result){
@@ -104,9 +105,10 @@ class PostController extends Controller
         $post->title = $request->get('title');
         $post->content = $request->get('content');
         $post->category_id = $request->get('category_id');
-        $post->user_id = 1;
+        $post->user_id = $request->session()->get('user_id');
         $post->status = $request->get('status')? true : false;
-
+        $post->is_payable = $request->get('is_payable')? true : false;
+        
         $result = $post->save();
         if($result){
             $seo = Seo::where('owner_id',$id)->where('type',1)->first();

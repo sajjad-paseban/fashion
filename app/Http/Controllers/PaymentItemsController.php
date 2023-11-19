@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\PaymentItems;
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class PaymentItemsController extends Controller
@@ -11,7 +13,8 @@ class PaymentItemsController extends Controller
      */
     public function index()
     {
-        //
+        $payment_items = PaymentItems::all();
+        return view("admin.pages.payment_items.index",compact('payment_items'));
     }
 
     /**
@@ -19,7 +22,9 @@ class PaymentItemsController extends Controller
      */
     public function create()
     {
-        //
+        $paymentItems_ids = PaymentItems::pluck('id');
+        $posts = Post::where('is_payable',true)->whereNotIn('id',$paymentItems_ids)->get();
+        return view('admin.pages.payment_items.create',compact('posts'));
     }
 
     /**
@@ -27,7 +32,15 @@ class PaymentItemsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $res = PaymentItems::create($request->all());
+   
+        if($res)
+            session()->flash('payment_items_create_form',true);
+        else
+            session()->flash('payment_items_create_form',false);
+
+        return to_route('admin.payment_items.index');
+
     }
 
     /**
@@ -43,7 +56,9 @@ class PaymentItemsController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $posts = Post::where('is_payable')->get();
+        $payment_item = PaymentItems::find($id);
+        return view('admin.pages.payment_items.edit',compact('posts','payment_item'));
     }
 
     /**
@@ -51,7 +66,14 @@ class PaymentItemsController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $res = PaymentItems::find($id)->update($request->all());
+   
+        if($res)
+            session()->flash('payment_items_edit_form',true);
+        else
+            session()->flash('payment_items_edit_form',false);
+
+        return to_route('admin.payment_items.index');
     }
 
     /**
@@ -59,6 +81,12 @@ class PaymentItemsController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $res = PaymentItems::find($id)->delete();
+        if($res)
+            session()->flash('payment_items_delete_form',true);
+        else
+            session()->flash('payment_items_delete_form',false);
+
+        return to_route('admin.payment_items.index');
     }
 }

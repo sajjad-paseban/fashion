@@ -9,4 +9,10 @@ class PaymentItems extends Model
 {
     use HasFactory;
     protected $table = "payment_items";
+    protected $guarded = [
+        'id'
+    ];
+    public function post(){
+        return $this->belongsTo(Post::class,'post_id');
+    }
 }

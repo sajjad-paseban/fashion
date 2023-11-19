@@ -45,11 +45,11 @@
                                 <tr>
                                     <td style="font-family: 'yekan';">{{$count}}</td>
                                     <td>
-                                        <img src="{{$item->payment_system->img_path ? asset('storage/payment/'.$item->payment_system->img_path) : 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/1024px-Default_pfp.svg.png'}}" width="30" alt="">
+                                        <img src="{{$item->payment_system->img_path ? asset('storage/payment/'.$item->payment_system->img_path) : 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/1024px-Default_pfp.svg.png'}}" width="20" height="20" style="border-radius: 50px; margin-left: 5px;" alt="">
                                         {{$item->payment_system->title}}
                                     </td>
                                     <td>{{$item->title}}</td>
-                                    <td><img src="{{$item->img_path ? asset('storage/payment/'.$item->img_path) : 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/1024px-Default_pfp.svg.png'}}" width="30" alt=""></td>
+                                    <td><img src="{{$item->img_path ? asset('storage/payment_gateways/'.$item->img_path) : 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/1024px-Default_pfp.svg.png'}}" width="25" height="25" style="border-radius: 50px;object-fit: cover;" alt=""></td>
                                     <td>{{$item->callback_url}}</td>
                                     <td>{{$item->pin}}</td>
                                     <td>{{$item->account_number}}</td>

@@ -69,6 +69,13 @@
                                       </div>
                                     <div>
                                 </div>
+                                <div class="form-group my-3">
+                                    <div class="form-check">
+                                        {!! Form::checkbox('is_payable', null, true,['class'=>'form-check-input']) !!}
+                                        {!! Form::label('is_payable','آیا قابل پرداخت باشد؟',['class'=>'form-check-label']) !!}
+                                      </div>
+                                    <div>
+                                </div>
                                 <div class="form-group my-2">
                                     <p style="text-align: right; font-family: 'vazir';position: relative;top:5px;user-select: none;">متن</p>
                                     {!! Form::textarea('content',null,['class'=>'form-control form-control-sm w-100','id'=>'content','autocomplete'=>'off']) !!}

@@ -94,6 +94,22 @@
                     </span>
                 </a>
             </li>
+            <li class="{{(str_contains(strtolower(URL::current()),'payment_items')) ? 'active' : ''}}" onclick="location.replace('{{route('admin.payment_items.index')}}')">
+                <a>
+                    قیمت گذاری محصولات
+                    <span class="material-symbols-outlined">
+                        payments
+                    </span>
+                </a>
+            </li>
+            <li class="{{(str_contains(strtolower(URL::current()),'payment_logs')) ? 'active' : ''}}" onclick="location.replace('{{route('admin.payment_logs.index')}}')">
+                <a>
+                    گزارش پرداخت ها
+                    <span class="material-symbols-outlined">
+                        sell
+                    </span>
+                </a>
+            </li>
             <li class="sub {{(str_contains(strtolower(URL::current()),'social') || str_contains(strtolower(URL::current()),'setting')) ? 'active show-sub-menu' : ''}}">
                 <a>
                     تنظیمات

@@ -24,6 +24,7 @@
                                 <th>عنوان</th>
                                 <th>دسته بندی</th>
                                 <th>وضعیت</th>
+                                <th>قابل پرداخت</th>
                                 <th>عملیات</th>
                                 <th>تاریخ ثیت</th>
                                 <th>تاریخ آخرین ویرایش</th>
@@ -43,6 +44,9 @@
                                     <td>{{$item->category ? $item->category->title : 'بدون دسته بندی'}}</td>
                                     <td>
                                         <input class="form-check-input" type="checkbox" {{($item->status == 1)? 'checked' : ''}} disabled>
+                                    </td>
+                                    <td>
+                                        <input class="form-check-input" type="checkbox" {{($item->is_payable == 1)? 'checked' : ''}} disabled>
                                     </td>
                                     <td>
                                         {!! Form::open(['route'=>['admin.post.destroy',$item->id],'method'=>'DELETE','class'=>'d-none','id'=>'delete'.$item->id]) !!}

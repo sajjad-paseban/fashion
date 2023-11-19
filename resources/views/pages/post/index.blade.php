@@ -40,7 +40,11 @@
         </h2>
 
         <div class="section-content seo-content">
-            {!! $data->post->content !!}
+            @if ($data->post->is_payable)
+                
+            @else
+                {!! $data->post->content !!}
+            @endif
         </div>
     </div>
 

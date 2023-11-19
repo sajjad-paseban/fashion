@@ -62,14 +62,19 @@
                                         @endforeach               
                                     </select>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group" style="position: relative;">
                                     <div class="form-check">
                                         {!! Form::checkbox('status', null, $post->status == true ? true : false,['class'=>'form-check-input']) !!}
                                         {!! Form::label('status','آیا فعال باشد؟',['class'=>'form-check-label']) !!}
-                                        <div>
+                                    <div>
+                                    <br>
+                                    <div class="form-check" style="position: absolute;right: 0 !important;">
+                                        {!! Form::checkbox('is_payable', null, $post->is_payable,['class'=>'form-check-input']) !!}
+                                        {!! Form::label('is_payable','آیا قابل پرداخت باشد؟',['class'=>'form-check-label']) !!}
+                                    </div>
                                 </div>
                                     </div>
-                                <div class="form-group my-2">
+                                <div class="form-group my-4">
                                     <p style="text-align: right; font-family: 'vazir';position: relative;top:5px;user-select: none;">متن</p>
                                     {!! Form::textarea('content',null,['class'=>'form-control form-control-sm w-100','id'=>'content','autocomplete'=>'off']) !!}
                                 </div>

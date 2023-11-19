@@ -531,3 +531,165 @@
         </script>
     @endif
 @endif
+
+@if (session()->has('payment_gateways_create_form'))
+    @if (session()->get('payment_gateways_create_form'))
+        <script>
+            new Toast({
+                message:'درگاه پرداخت با موفقیت اضافه شد',
+                type:'s'
+            })
+        </script>
+    @else
+        <script>
+            new Toast({
+                message:'درگاه پرداخت اضافه نشد',
+                type:'f'
+            })
+        </script>    
+    @endif
+@endif
+
+@if (session()->has('payment_gateways_edit_form'))
+    @if (session()->get('payment_gateways_edit_form'))
+        <script>
+            new Toast({
+                message:'درگاه پرداخت با موفقیت ویرایش شد',
+                type:'s'
+            })
+        </script>
+    @else
+        <script>
+            new Toast({
+                message:'درگاه پرداخت ویرایش نشد',
+                type:'f'
+            })
+        </script>    
+    @endif
+@endif
+
+@if (session()->has('payment_gateways_delete_form'))
+    @if (session()->get('payment_gateways_delete_form'))
+        <script>
+            new Toast({
+                message:'درگاه پرداخت با موفقیت حذف شد',
+                type:'s'
+            })
+        </script>
+    @else
+        <script>
+            new Toast({
+                message:'درگاه پرداخت حذف نشد',
+                type:'f'
+            })
+        </script>    
+    @endif
+@endif
+
+@if (session()->has('payment_items_create_form'))
+    @if (session()->get('payment_items_create_form'))
+        <script>
+            new Toast({
+                message:'قیمت گذاری محصول با موفقیت انجام شد',
+                type:'s'
+            })
+        </script>
+    @else
+        <script>
+            new Toast({
+                message:'قیمت گذاری محصول انجام نشد',
+                type:'f'
+            })
+        </script>    
+    @endif
+@endif
+
+@if (session()->has('payment_items_edit_form'))
+    @if (session()->get('payment_items_edit_form'))
+        <script>
+            new Toast({
+                message:'قیمت محصول با موفقیت ویرایش شد',
+                type:'s'
+            })
+        </script>
+    @else
+        <script>
+            new Toast({
+                message:'قیمت محصول ویرایش نشد',
+                type:'f'
+            })
+        </script>    
+    @endif
+@endif
+
+@if (session()->has('payment_items_delete_form'))
+    @if (session()->get('payment_items_delete_form'))
+        <script>
+            new Toast({
+                message:'قیمت محصول با موفقیت حذف شد',
+                type:'s'
+            })
+        </script>
+    @else
+        <script>
+            new Toast({
+                message:'قیمت محصول حذف نشد',
+                type:'f'
+            })
+        </script>    
+    @endif
+@endif
+
+@if (session()->has('payment_logs_create_form'))
+    @if (session()->get('payment_logs_create_form'))
+        <script>
+            new Toast({
+                message:'گزارش پرداخت با موفقیت اضافه شد',
+                type:'s'
+            })
+        </script>
+    @else
+        <script>
+            new Toast({
+                message:'گزارش پرداخت اضافه نشد',
+                type:'f'
+            })
+        </script>    
+    @endif
+@endif
+
+@if (session()->has('payment_logs_edit_form'))
+    @if (session()->get('payment_logs_edit_form'))
+        <script>
+            new Toast({
+                message:'گزارش پرداخت با موفقیت ویرایش شد',
+                type:'s'
+            })
+        </script>
+    @else
+        <script>
+            new Toast({
+                message:'گزارش پرداخت ویرایش نشد',
+                type:'f'
+            })
+        </script>    
+    @endif
+@endif
+
+@if (session()->has('payment_logs_delete_form'))
+    @if (session()->get('payment_logs_delete_form'))
+        <script>
+            new Toast({
+                message:'گزارش پرداخت با موفقیت حذف شد',
+                type:'s'
+            })
+        </script>
+    @else
+        <script>
+            new Toast({
+                message:'گزارش پرداخت حذف نشد',
+                type:'f'
+            })
+        </script>    
+    @endif
+@endif
