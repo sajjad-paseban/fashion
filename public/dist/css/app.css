@@ -176,7 +176,8 @@ section.content div.section.training-section .section-content .train-item .train
 section.content div.section.training-section .section-content .train-item .train-item-image img {
   width: inherit;
   height: 200px;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 section.content div.section.training-section .section-content .train-item .train-item-body {
   padding: 0 20px;
@@ -638,6 +639,51 @@ jdp-container {
 }
 .pagination ul li:hover a {
   color: #BA55D3;
+}
+
+.payment > .payment-header p {
+  text-align: center;
+  font-weight: bold;
+}
+.payment > .payment-header p.price-tag {
+  color: #ff3c41;
+  font-size: 22px;
+}
+.payment > .payment-header p.price-tag::after {
+  content: "ریال";
+}
+.payment > form .payment-body {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.payment > form .payment-body .payment-item {
+  display: inline-flex;
+  width: auto;
+}
+.payment > form .payment-body .payment-item label > .card-input-element {
+  display: none;
+}
+.payment > form .payment-body .payment-item label .card-input {
+  margin: 10px;
+  padding: 0px;
+}
+.payment > form .payment-body .payment-item label .card-input:hover {
+  cursor: pointer;
+}
+.payment > form .payment-body .payment-item label .card-input-element:checked + .card-input {
+  box-shadow: 0 0 1px 1px #ba55d3;
+}
+.payment > form .payment-body .payment-item label .panel .panel-body {
+  display: flex;
+}
+.payment > form .payment-body .payment-item label .panel .panel-body img {
+  width: 150px !important;
+}
+.payment > form .payment-body .payment-item label .panel .panel-heading {
+  text-align: center;
+  padding: 10px;
+  background-color: rgba(227, 228, 232, 0.5);
 }
 
 .sticky {

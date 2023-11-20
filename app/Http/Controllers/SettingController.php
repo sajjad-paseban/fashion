@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Log;
 use App\Models\Setting;
 use Carbon\Carbon;
 use File;

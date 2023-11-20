@@ -220,7 +220,64 @@ jdp-container{
 		
 	}
 }
-
+.payment{
+    & > .payment-header{
+        p{
+            text-align: center;
+            font-weight: bold;
+        }
+        p.price-tag{
+            color: #ff3c41;
+            font-size: 22px;
+            &::after{
+                content: 'ریال';
+            }
+        }
+    }
+    & > form{
+        .payment-body{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            .payment-item{
+                display: inline-flex;
+                width: auto;           
+                label{
+                    & > .card-input-element {
+                        display: none;
+                    }
+                    
+                    .card-input {
+                        margin: 10px;
+                        padding: 00px;
+                    }
+                    
+                    .card-input:hover {
+                        cursor: pointer;
+                    }
+                    
+                    .card-input-element:checked + .card-input {
+                         box-shadow: 0 0 1px 1px #ba55d3;
+                    }    
+    
+                    .panel{
+                        .panel-body{
+                            display: flex;
+                            img{
+                                width: 150px !important;
+                            }
+                        }
+                        .panel-heading{
+                            text-align: center;
+                            padding: 10px;
+                            background-color: rgba($color: #e3e4e8, $alpha: 0.5);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
 .sticky{
     position: fixed !important;
     background-color: rgba(0, 0, 0, 0.9) !important;

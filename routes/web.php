@@ -16,12 +16,16 @@ use App\Http\Controllers\UserController;
 use App\Models\Comment;
 use App\Models\Media;
 use App\Models\Page;
+use App\Models\PaymentGateways;
+use App\Models\PaymentLogs;
 use App\Models\Post;
 use App\Models\Section;
 use App\Models\Seo;
 use App\Models\Setting;
 use App\Models\SocialNetwork;
 use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -94,9 +98,11 @@ Route::get('/posts',function(){
 
 Route::get('/post/{slug}',function($slug){
     $post = Seo::where('type',1)->where('slug',$slug);
+    $payment_gateways = PaymentGateways::where('status',true)->get();
     if($post->count()){
         $data = $post->first();
-        return view('pages.post.index',compact('data'));
+        $users_payments = PaymentLogs::where('post_id',$data->id)->where('status', true)->pluck('user_id')->toArray();
+        return view('pages.post.index',compact('data','payment_gateways','users_payments'));
     }
 
     return redirect('404');
@@ -127,3 +133,47 @@ Route::get('logout',function(){
     session()->flush();
     return to_route('home');
 })->name('logout')->middleware('Authenticated');
+
+Route::post('payment/{user_id}/{post_id}',function(Request $request ,$user_id ,$post_id){
+    
+    if(!$request->get('gateway')){
+        session()->flash('payment_error', 'یکی از درگاه های پرداخت را انتخاب نمایید');
+        return back();
+    }
+
+    $payment_gateway = PaymentGateways::find($request->get('gateway'));
+    $post = Post::find($post_id);
+
+
+    $invoice_id = PaymentLogs::create([
+        'post_id' => $post->id,
+        'user_id' => $user_id,
+        'amount' => $post->payment_item->amount,
+        'status' => false
+    ])->id;
+    
+    
+    if($payment_gateway->payment_system->id == 1 && $payment_gateway->payment_system->status){
+        
+
+        $response = Http::post('https://panel.aqayepardakht.ir/api/v2/create',[
+            'pin' => $payment_gateway->pin,
+            'amount' => $post->payment_item->amount,
+            'callback' => env('APP_URL',str_replace('/public','',request()->root())).'/payment/result/'.$user_id.'/'.$post_id.'/'.$invoice_id,
+            'invoice_id' => $invoice_id,
+        ]);
+
+        return $response;
+
+    }else if($payment_gateway->payment_system->id == 2 && $payment_gateway->payment_system->status){
+
+    }else{
+        session()->flash('payment_error', 'عملیات با خطا مواجه شد');
+        return back();
+    }
+
+    return $payment_gateway->payment_system;
+
+
+
+})->name('payment');

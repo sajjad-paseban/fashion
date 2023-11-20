@@ -40,8 +40,67 @@
         </h2>
 
         <div class="section-content seo-content">
-            @if ($data->post->is_payable)
-                
+            @if ($data->post->is_payable && !in_array(session()->get('user_id'),$users_payments))
+                <div class="payment">
+                    <div class="payment-header">
+                        <p>
+                            این آموزش می بایست در ابتدا خریداری شود.
+                        </p>
+                        <p class="price-tag">
+                            {{number_format($data->post->payment_item->amount)}}
+                        </p>
+                        <p style="color: #ff3c41">
+                            @if (session()->get('payment_error'))
+                                {{session()->get('payment_error')}}
+                            @endif
+                        </p>
+                    </div>
+                    @if ($payment_gateways)
+                        {!! Form::open(['route'=> ['payment', session()->get('user_id'), $data->post->id] , 'method' => 'POST' , 'id'=>'payment']) !!}
+                        <div class="payment-body">
+                            @foreach ($payment_gateways as $item)
+                                <div class="payment-item">
+                                    <label>
+                                        <input type="radio" value="{{$item->id}}" name="gateway" class="card-input-element" />
+                                        <div class="panel panel-default card-input">
+                                            <div class="panel-body">
+                                                <img src="{{asset('storage/payment_gateways/'.$item->img_path)}}" alt="">
+                                            </div>
+                                            <div class="panel-heading">
+                                                {{$item->title}}
+                                            </div>
+                                        </div>
+                                    </label>
+                                </div>
+                            @endforeach
+                        </div>
+                        <div style="text-align: center;">
+                            <button class="custom-btn" style="left: 0" type="submit">
+                                پرداخت اینترنتی
+                            </button>
+                        </div>
+                        {!! Form::close() !!}
+                        @push('script')
+                            <script>                
+                                $('#payment').validate({
+                                    rules:{
+                                        gateway:{
+                                            required: true
+                                        }
+                                    },
+                                    messages:{
+                                        gateway:{
+                                            required: 'یکی از درگاه های پرداخت زیر را انتخاب نمایید'
+                                        }
+                                    },
+                                    submitHandler: function(form){
+                                        form.submit();
+                                    }
+                                });
+                            </script>
+                        @endpush
+                    @endif
+                </div>                
             @else
                 {!! $data->post->content !!}
             @endif
