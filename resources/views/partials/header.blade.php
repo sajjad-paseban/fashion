@@ -209,7 +209,7 @@
                 </div>
             </div>
         </section>
-        @if (str_ends_with(strtolower(URL::current()),'public'))
+        @if (str_ends_with(strtolower(URL::current()),request()->getHost()))
             <section class="header-content">
                 <div class="header-content-side">
                     @if ($setting->logoTitle)

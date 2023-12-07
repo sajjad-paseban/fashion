@@ -47,7 +47,7 @@
                             این آموزش می بایست در ابتدا خریداری شود.
                         </p>
                         <p class="price-tag">
-                            {{number_format($data->post->payment_item->amount)}}
+                            {{$data->post->payment_item ? number_format($data->post->payment_item->amount) : "بدون قیمت"}}
                         </p>
                         <p style="color: #ff3c41">
                             @if (session()->get('payment_error'))

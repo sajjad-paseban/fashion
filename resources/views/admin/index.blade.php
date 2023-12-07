@@ -1,10 +1,18 @@
+@php
+    $setting = \App\Models\Setting::get()->last();
+@endphp
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>
+        کنترل پنل مدیریت
+    </title>
+    @if ($setting->siteIcon)
+        <link rel="shortcut icon" type="image/x-icon" href="{{asset('storage/setting/'.$setting->siteIcon)}}">
+    @endif
     <link href="{{asset('admin/assets/bootstrap/css/bootstrap.rtl.min.css')}}" rel="stylesheet">
     <link href="{{asset('admin/assets/bootstrap/css/bootstrap-grid.rtl.min.css')}}" rel="stylesheet">
     <link href="{{asset('admin/assets/bootstrap/css/bootstrap-reboot.rtl.min.css')}}" rel="stylesheet">

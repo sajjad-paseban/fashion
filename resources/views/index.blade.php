@@ -17,7 +17,7 @@
     @if ($setting->siteIcon)
         <link rel="shortcut icon" type="image/x-icon" href="{{asset('storage/setting/'.$setting->siteIcon)}}">
     @endif
-    <link href="https://www.monagolchin.com/" rel="canonical">
+    <link href="https://www.monagolchin.ir/" rel="canonical">
     <link rel="stylesheet" href="{{asset('utils/plyr/plyr.css')}}" />
     <link rel="stylesheet" href="{{asset('utils/datepicker/jalalidatepicker.min.css')}}">
     <link rel="stylesheet" href="{{asset('utils/google_icons/icons.css')}}" />    
