@@ -177,7 +177,7 @@
                 @foreach ($data->post->comments as $item)
                     <div class="comment-item">
                         <div class="item-top">
-                            <img src="{{$item->user->photo_path ? asset('storage/user/'.$item->user->photo_path) : asset('icons/default-user.svg.png')}}" alt="">
+                            <img src="{{$item->user->photo_path ? asset('storage/user/'.$item->user->photo_path) : asset('icon/default-user.svg.png')}}" alt="">
                             <div class="item-info">
                                 <div class="user-name">
                                     {{$item->user->name}}
@@ -216,7 +216,7 @@
         
         div.seo-content video{
             width: calc(100%) !important;
-            height: auto !important;
+            max-height: 600px !important;
         }
         div.seo-content img{
             width: calc(100%) !important;
@@ -267,7 +267,11 @@
                     $(this).attr('playsinline','');
                     $(this).attr('controls','');
                     $(this).attr('data-poster','{{asset('storage/post/'.$data->post->path)}}');
-                    new Plyr('#player'+count);
+                    new Plyr('#player'+count,{
+                        fullscreen:{
+                            enabled: false
+                        }
+                    });
                 })
             })
         }catch(ex){}

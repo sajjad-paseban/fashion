@@ -28,7 +28,7 @@
                 </div>
                 @if ($section->worldContent)
                     <p>
-                        {{$section->worldContent}}
+                        {!! nl2br($section->worldContent) !!}
                     </p>                
                 @endif
             </div>

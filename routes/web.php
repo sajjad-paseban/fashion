@@ -177,3 +177,6 @@ Route::post('payment/{user_id}/{post_id}',function(Request $request ,$user_id ,$
 
 
 })->name('payment');
+Route::get('er',function(){
+    echo phpinfo();
+});

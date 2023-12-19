@@ -12,7 +12,7 @@
             <div class="header-top-search">
                 @if (session()->has('user_id'))                    
                     <div class="image-profile">
-                        <img class="default-image-profile" src="{{$user->photo_path ? asset('storage/user/'.$user->photo_path) : asset('icons/default-user.svg.png')}}" alt="پروفایل">
+                        <img class="default-image-profile" src="{{$user->photo_path ? asset('storage/user/'.$user->photo_path) : asset('icon/default-user.svg.png')}}" alt="پروفایل">
                         <span>
                             @if ($user->name)
                                 {{$user->name}}
@@ -66,7 +66,7 @@
                     </li>
                     <li id="train-list-item">
                         <a href="{{(str_ends_with(strtolower(URL::current()),'public')) ? '#training' : route('home') . '/#training'}}">آموزش</a>
-                        <img src="{{asset('icons/arrow-down.png')}}" alt="">
+                        <img src="{{asset('icon/arrow-down.png')}}" alt="">
                         <div class="train-menu">
                             <div class="train-menu-wrapper">
                                 @foreach ($category as $item)
@@ -146,7 +146,7 @@
                         </li>
                         <li id="train-list-item">
                             <a href="{{(str_ends_with(strtolower(URL::current()),'public')) ? '#training' : route('home') . '/#training'}}">آموزش</a>
-                            <img src="{{asset('icons/arrow-down.png')}}" alt="">
+                            <img src="{{asset('icon/arrow-down.png')}}" alt="">
                             <div class="train-menu">
                                 <div class="train-menu-wrapper">
                                     @foreach ($category as $item)

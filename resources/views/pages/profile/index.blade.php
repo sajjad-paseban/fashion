@@ -38,7 +38,7 @@
                     @if ($user->photo_path)
                         <img src="{{asset('storage/user/'.$user->photo_path)}}" class="image-profile" id="photo_img_tag" alt="">                    
                     @else
-                        <img src="{{asset('icons/default-user.svg.png')}}" id="photo_img_tag" class="image-profile" alt="">
+                        <img src="{{asset('icon/default-user.svg.png')}}" id="photo_img_tag" class="image-profile" alt="">
                     @endif
                     {!! Form::label('photo_path','آپلود تصویر') !!}
                     @if ($user->photo_path)

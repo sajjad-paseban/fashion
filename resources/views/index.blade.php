@@ -31,7 +31,7 @@
         @yield('content')
     </section>
     <div class="up-arrow">
-        <img src="{{asset('icons/up_arrow.png')}}" alt="بالا">
+        <img src="{{asset('icon/up_arrow.png')}}" alt="بالا">
     </div>
     @include('partials.footer')
     <script src="{{asset('dist/js/jquery-3.7.0.js')}}"></script>

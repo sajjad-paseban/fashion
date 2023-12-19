@@ -85,7 +85,7 @@ class SectionController extends Controller
                 $section->worldPhoto = $filename;
                 $file->move('storage/section',$filename);
             }
-            $section->worldContent = $request->get('worldContent');
+            $section->worldContent = nl2br($request->get('worldContent'));
         }
 
         if($type == 3){

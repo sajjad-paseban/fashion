@@ -58,6 +58,7 @@ section.content div.section.biography-section .section-content p {
   font-family: "yekan";
   font-size: 20px;
   align-self: flex-start;
+  line-height: 1.5;
 }
 section.content div.section.social-network-section {
   position: relative;
@@ -120,6 +121,7 @@ section.content div.section.fashion-world-section .section-content p {
   color: #fff;
   font-family: "yekan";
   font-size: 20px;
+  line-height: 1.5;
 }
 section.content div.section.training-section {
   position: relative;
@@ -175,7 +177,8 @@ section.content div.section.training-section .section-content .train-item .train
 }
 section.content div.section.training-section .section-content .train-item .train-item-image img {
   width: inherit;
-  height: 200px;
+  height: 300px;
+  object-position: top;
   -o-object-fit: cover;
      object-fit: cover;
 }
@@ -266,7 +269,7 @@ footer .content div.footer-logo span {
   bottom: 30px;
 }
 footer .content div.footer-logo span b {
-  color: #BA55D3;
+  color: #FFD700;
 }
 footer .content div.footer-menu {
   width: 80%;
@@ -291,10 +294,10 @@ footer .content div.footer-menu ul li a {
   color: #d9d9d9;
 }
 footer .content div.footer-menu ul li a:hover {
-  color: #BA55D3;
+  color: #FFD700;
 }
 footer .content div.footer-menu ul li a.active {
-  color: #BA55D3;
+  color: #FFD700;
 }
 footer .content div.footer-menu ul:last-child {
   margin-right: 80px;
@@ -457,7 +460,7 @@ footer p::before {
   font-family: "yekan";
 }
 .frm-control textarea:focus, .frm-control textarea:active {
-  outline: 3px solid #BA55D3;
+  outline: 3px solid #FFD700;
 }
 .frm-control input {
   display: inline-flex;
@@ -472,7 +475,7 @@ footer p::before {
   font-family: "yekan";
 }
 .frm-control input:focus, .frm-control input:active {
-  outline: 3px solid #BA55D3;
+  outline: 3px solid #FFD700;
 }
 .frm-control a {
   text-decoration: none;
@@ -629,16 +632,16 @@ jdp-container {
   background-color: rgba(255, 255, 255, 0.25);
 }
 .pagination ul li.active {
-  border-bottom: 4px solid #BA55D3 !important;
+  border-bottom: 4px solid #FFD700 !important;
 }
 .pagination ul li.active span {
-  color: #BA55D3 !important;
+  color: #FFD700 !important;
 }
 .pagination ul li:hover {
-  border-bottom: 4px solid #BA55D3;
+  border-bottom: 4px solid #FFD700;
 }
 .pagination ul li:hover a {
-  color: #BA55D3;
+  color: #FFD700;
 }
 
 .payment > .payment-header p {
@@ -672,7 +675,7 @@ jdp-container {
   cursor: pointer;
 }
 .payment > form .payment-body .payment-item label .card-input-element:checked + .card-input {
-  box-shadow: 0 0 1px 1px #ba55d3;
+  box-shadow: 0 0 1px 1px #FFD700;
 }
 .payment > form .payment-body .payment-item label .panel .panel-body {
   display: flex;
@@ -840,10 +843,10 @@ header .header-main section.header-top .header-top-menu ul li a {
   color: #fff;
 }
 header .header-main section.header-top .header-top-menu ul li a:hover {
-  color: #BA55D3;
+  color: #FFD700;
 }
 header .header-main section.header-top .header-top-menu ul li a.active {
-  color: #BA55D3;
+  color: #FFD700;
 }
 header .header-main section.header-top .header-top-menu ul li#train-list-item img {
   filter: invert(100);
@@ -898,7 +901,7 @@ header .header-main section.header-top .header-top-menu ul li#train-list-item .t
   color: #d9d9d9;
 }
 header .header-main section.header-top .header-top-menu ul li#train-list-item .train-menu .train-menu-wrapper ul li a:hover {
-  color: #BA55D3;
+  color: #FFD700;
 }
 header .header-main section.header-top .header-top-menu ul li#train-list-item:hover img {
   transform: rotate(180deg);
@@ -922,7 +925,7 @@ header .header-main section.header-top .header-top-logo span {
   right: 30px;
 }
 header .header-main section.header-top .header-top-logo span b {
-  color: #BA55D3;
+  color: #FFD700;
 }
 header .header-main section.header-top .header-top-logo img {
   cursor: pointer;
@@ -939,7 +942,6 @@ header .header-main section.header-content {
   display: flex;
   justify-content: space-between;
   height: 91.3%;
-  position: relative;
 }
 header .header-main section.header-content img.photograph {
   width: 25%;
@@ -970,7 +972,7 @@ header .header-main section.header-content div.header-content-side .headline-fir
   position: relative;
 }
 header .header-main section.header-content div.header-content-side .headline-first b {
-  color: #BA55D3;
+  color: #FFD700;
   position: relative;
 }
 header .header-main section.header-content div.header-content-side .headline-second {
@@ -983,7 +985,7 @@ header .header-main section.header-content div.header-content-side .headline-sec
   top: 0px;
   left: 90px;
   font-family: "Vibur";
-  text-shadow: 0 -20px 100px, 0 0 2px, 0 0 1em #BA55D3, 0 0 0.5em #BA55D3, 0 0 0.1em #BA55D3, 0 10px 3px #000;
+  text-shadow: 0 -20px 100px, 0 0 2px, 0 0 1em #FFD700, 0 0 0.5em #FFD700, 0 0 0.1em #FFD700, 0 10px 3px #000;
 }
 header .header-main section.header-content div.header-content-side .headline-second span {
   font-size: 80px;
@@ -1112,7 +1114,7 @@ header .header-main section.header-content div.header-content-side .headline-sec
     transition: color 100ms;
   }
   header .header-main section.header-top .header-top-menu-mobile .header-top-menu-mobile-wrapper ul li a.active {
-    color: #BA55D3 !important;
+    color: #FFD700 !important;
   }
   header .header-main section.header-top .header-top-menu-mobile .header-top-menu-mobile-wrapper ul li:hover {
     background-color: rgba(255, 255, 255, 0.15);
@@ -1177,7 +1179,7 @@ header .header-main section.header-content div.header-content-side .headline-sec
     color: #d9d9d9;
   }
   header .header-main section.header-top .header-top-menu-mobile .header-top-menu-mobile-wrapper ul li#train-list-item .train-menu .train-menu-wrapper ul li a:hover {
-    color: #BA55D3;
+    color: #FFD700;
   }
   header .header-main section.header-top .header-top-menu-mobile .header-top-menu-mobile-wrapper ul li#train-list-item .train-menu.show-sub-menu {
     display: block;
@@ -1301,7 +1303,7 @@ body.login .login-section .form .frm-control input {
   font-family: "yekan";
 }
 body.login .login-section .form .frm-control input:focus, body.login .login-section .form .frm-control input:active {
-  outline: 3px solid #BA55D3;
+  outline: 3px solid #FFD700;
 }
 body.login .login-section .form .frm-control a {
   text-decoration: none;

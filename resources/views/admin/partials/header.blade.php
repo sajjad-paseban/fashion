@@ -5,11 +5,11 @@
     <ul>
         <li class="profile">
             <span>{{$user->name}}</span>
-            <img src="{{$user->photo_path ? asset('storage/user/'.$user->photo_path) : asset('icons/default-user.svg.png')}}" alt="">
+            <img src="{{$user->photo_path ? asset('storage/user/'.$user->photo_path) : asset('icon/default-user.svg.png')}}" alt="">
             <div class="profile-menu">
                 <div class="profile-wrapper">
                     <div class="profile-wrapper-header">
-                        <img src="{{$user->photo_path ? asset('storage/user/'.$user->photo_path) : asset('icons/default-user.svg.png')}}" alt="">
+                        <img src="{{$user->photo_path ? asset('storage/user/'.$user->photo_path) : asset('icon/default-user.svg.png')}}" alt="">
                         <span>{{$user->name}}</span>
                         <b>مدیر کل سایت</b>
                     </div>

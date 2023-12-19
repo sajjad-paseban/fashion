@@ -53,6 +53,7 @@ section.content{
                     color: rgba(0, 0, 0, 0.7);
                     font-family: 'yekan';
                     font-size: 20px;
+                    line-height: 1.5;
                     align-self: flex-start;
                 }
             }
@@ -117,6 +118,7 @@ section.content{
                     color: #fff;
                     font-family: 'yekan';
                     font-size: 20px;
+                    line-height: 1.5;
                 }
             }
         }
@@ -165,8 +167,9 @@ section.content{
                         }
                         img{
                             width: inherit;
-                            height: 200px;
+                            height: 300px;
                             object-fit: cover;
+                            object-position: top;
                         }
                     }
                     .train-item-body{
