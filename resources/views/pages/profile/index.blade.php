@@ -84,7 +84,7 @@
             margin-top: 500px !important;
         }
         .frm-control{
-            width: 400px;
+            width: 300px;
         }
     </style>
     @push('script')
