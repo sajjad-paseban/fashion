@@ -62,10 +62,7 @@ class ProfileController extends Controller
         
         return back();
     }
-
-    public function newPassword(){
-        return view('pages.profile.new-password');
-    }
+    
     public function password(){
         $user = User::find(request()->session()->get('user_id'));
         if($user->password)

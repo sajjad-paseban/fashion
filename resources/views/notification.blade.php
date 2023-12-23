@@ -693,3 +693,20 @@
         </script>    
     @endif
 @endif
+@if (session()->has('password-forgotten'))
+    @if (session()->get('password-forgotten'))
+        <script>
+            new Toast({
+                message:'لینک بازیابی گذرواژه به ایمیل شما ارسال گردید',
+                type:'s'
+            })
+        </script>
+    @else
+        <script>
+            new Toast({
+                message:'پست الکتریکی یا این آدرس در سیستم ثبت نگردیده است',
+                type:'f'
+            })
+        </script>    
+    @endif
+@endif

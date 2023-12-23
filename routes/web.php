@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\PasswordForgottenController;
 use App\Http\Controllers\PaymentGatewaysController;
 use App\Http\Controllers\PaymentItemsController;
 use App\Http\Controllers\PaymentLogsController;
@@ -117,7 +118,6 @@ Route::prefix('profile')->name('profile.')->group(function(){
     Route::get('',[ProfileController::class,'index'])->name('index');
     Route::put('profil-action/{id}',[ProfileController::class,'profile_action'])->name('profile-action');
     Route::get('change-password',[ProfileController::class,'changePassword'])->name('change-password');
-    Route::get('new-password',[ProfileController::class,'newPassword'])->name('new-password');
     Route::get('password',[ProfileController::class,'password'])->name('password');
     Route::get('delete-photo/{id}',[ProfileController::class,'delete_photo'])->name('delete-photo');
     Route::put('password_action',[ProfileController::class,'password_action'])->name('password-action');
@@ -177,6 +177,7 @@ Route::post('payment/{user_id}/{post_id}',function(Request $request ,$user_id ,$
 
 
 })->name('payment');
-Route::get('er',function(){
-    echo phpinfo();
-});
+
+Route::get('password-forgotten',[PasswordForgottenController::class, 'index'])->name('password-forgotten');
+Route::post('send-password-forgotten-email-action',[PasswordForgottenController::class, 'sendPasswordForgottenEmail'])->name('send-password-forgotten-email-action');
+Route::get('check-password-forgotten-email',[PasswordForgottenController::class, 'checkPasswordForgottenEmail']);

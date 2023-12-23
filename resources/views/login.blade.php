@@ -61,7 +61,7 @@
                     <input id="password" name="password" type="password">
                 </div>
                 <div class="frm-control">
-                    <a href="">
+                    <a href="{{route('password-forgotten')}}">
                         گذرواژه خود را فراموش کرده ام!
                     </a>
                 </div>
