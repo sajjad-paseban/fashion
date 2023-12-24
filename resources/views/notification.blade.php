@@ -710,3 +710,13 @@
         </script>    
     @endif
 @endif
+@if (session()->has('change-password-forgotten'))
+    @if (session()->get('change-password-forgotten'))
+        <script>
+            new Toast({
+                message:'گذرواژه ویرایش گردید',
+                type:'s'
+            })
+        </script>    
+    @endif
+@endif

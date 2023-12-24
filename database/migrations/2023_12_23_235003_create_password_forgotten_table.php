@@ -27,9 +27,6 @@ return new class extends Migration
             ->nullable()
             ->default(false);
 
-            $table->integer('second_period')
-            ->nullable();
-
             $table->timestamps();
         });
     }

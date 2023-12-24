@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\PasswordForgotten;
 use Illuminate\Http\Request;
 use App\Models\User;
-use Carbon\Carbon;
+use Hash;
 use Illuminate\Support\Facades\Mail;
 class PasswordForgottenController extends Controller
 {
@@ -27,7 +27,6 @@ class PasswordForgottenController extends Controller
                 'uuid' => $uuid,
                 'user_id' => $user->get()->last()->id,
                 'status' => false,
-                'second_period' => 1200
             ])->id;
 
             $msg = '';
@@ -48,18 +47,33 @@ class PasswordForgottenController extends Controller
     }
     public function checkPasswordForgottenEmail(Request $request){
         $check = PasswordForgotten::where('uuid',$request->uuid)->where('id',$request->id)->get()->last();
-        $diffInSecond =  Carbon::parse($check->created_at)->addSeconds($check->second_period)->diffInSeconds(now());       
-        return $diffInSecond;
-        if($check && $check->status == false && $diffInSecond > 0){
-            $data = [
-                'user_id' => $check->user_id,
-                'id' => $check->id,
+        if($check && $check->status == false){
+            $data = (object)[
                 'uuid' => $check->uuid
             ];
             return view('pages.new-password', compact('data'));
         }else{
             return to_route('login');
         }
+    }
+
+    public function changePasswordForgotten(Request $request, $uuid){
+        $passwordForgotten = PasswordForgotten::where('uuid',$uuid);
+        $user_id = $passwordForgotten->get()->last()->user_id;
+
+        User::find($user_id)->update(
+            [
+                'password' => Hash::make($request->password)
+            ]
+        );
+
+        PasswordForgotten::where('user_id',$user_id)->update([
+            'status' => true
+        ]);
+
+        $request->session()->flash('change-password-forgotten',true);
+
+        return to_route('login');
     }
 
 }

@@ -177,7 +177,9 @@ Route::post('payment/{user_id}/{post_id}',function(Request $request ,$user_id ,$
 
 
 })->name('payment');
-
-Route::get('password-forgotten',[PasswordForgottenController::class, 'index'])->name('password-forgotten');
-Route::post('send-password-forgotten-email-action',[PasswordForgottenController::class, 'sendPasswordForgottenEmail'])->name('send-password-forgotten-email-action');
-Route::get('check-password-forgotten-email',[PasswordForgottenController::class, 'checkPasswordForgottenEmail']);
+Route::middleware(['NotAuthenticated'])->group(function(){
+    Route::get('password-forgotten',[PasswordForgottenController::class, 'index'])->name('password-forgotten');
+    Route::post('send-password-forgotten-email-action',[PasswordForgottenController::class, 'sendPasswordForgottenEmail'])->name('send-password-forgotten-email-action');
+    Route::get('check-password-forgotten-email',[PasswordForgottenController::class, 'checkPasswordForgottenEmail']);
+    Route::put('change-password-forgotten/{uuid}',[PasswordForgottenController::class, 'changePasswordForgotten'])->name('change-password-forgotten');
+});

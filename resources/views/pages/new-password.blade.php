@@ -28,15 +28,36 @@
             گذرواژه ای جدید برای حساب کاربری خود انتخاب نمایید.
         </p>
         <div class="section-content">
-            {!! Form::open(['method'=>'POST']) !!}
+            {!! Form::open(['route'=>['change-password-forgotten',$data->uuid],'method'=>'PUT','id'=>'change-password-forgotten']) !!}
                 <div class="frm-control">
                     {!! Form::label('password','گذرواژه جدید') !!}
-                    {!! Form::password('') !!}
+                    {!! Form::password('password') !!}
                 </div>
                 <button class="custom-btn" type="submit">
                     ادامه
                 </button>
             {!! Form::close() !!}
+            @push('script')
+                <script>
+                    $('#change-password-forgotten').validate({
+                        rules:{
+                            password:{
+                                required: true,
+                                minlength: 8,
+                            },
+                        },
+                        messages:{
+                            password:{
+                                required: '.فیلد گذرواژه اجباری می باشد',
+                                minlength: 'گذرواژه می بایست حداقل 8 رقمی باشد',
+                            },
+                        },
+                        submitHandler: function(form){
+                            form.submit();
+                        }
+                    });
+                </script>
+            @endpush
         </div>
     </div>
     <style>
