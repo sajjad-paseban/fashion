@@ -82,7 +82,7 @@ Route::middleware(['Initial','Authenticated','IsAdmin'])->group(function(){
 Route::get('/', function () {
     $section = Section::get()->last();
     $setting = Setting::get()->last();
-    $posts = Post::where('status',true)->orderBy('created_at','desc')->get()->take(3);
+    $posts = Post::where('status',true)->orderBy('created_at','asc')->get()->take(3);
     $networks = SocialNetwork::where('status',true)->get();
     return view('pages.home',compact('section','setting','posts','networks'));
 })->name('home');
